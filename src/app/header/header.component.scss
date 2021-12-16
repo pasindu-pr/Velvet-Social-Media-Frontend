@@ -1,0 +1,43 @@
+@import "../shared/styles/colors.scss";
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $second-color;
+  height: 7vh;
+  color: white;
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .icon {
+      color: rgb(194, 194, 194);
+      cursor: pointer;
+    }
+  }
+
+  .user-icon > img {
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}
+
+.secondary-header {
+  display: flex;
+  gap: 30px;
+  height: 45px;
+  background: $main-color-two;
+  align-items: center;
+  justify-content: center;
+  color: $font-color;
+
+  .item {
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+  }
+}

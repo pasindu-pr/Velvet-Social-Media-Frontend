@@ -1,0 +1,64 @@
+<div class="post-create-input" (click)="onInputClick()">
+  <div class="user">
+    <img src="../../../assets/images/user.jpg" alt="" />
+
+    <div class="whats-up-text">
+      <p>Hey, What's on your mind?</p>
+    </div>
+  </div>
+
+  <div class="upload-options">
+    <fa-icon [icon]="microphoneIcon"> </fa-icon>
+    <fa-icon [icon]="imagesIcon"> </fa-icon>
+  </div>
+</div>
+
+<div class="post-create-popup-outer" *ngIf="isModelOpen">
+  <div class="post-create-popup-inner">
+    <div class="post-create-heading">
+      <h2>Create Post</h2>
+      <fa-icon
+        [icon]="closeIcon"
+        class="close-icon"
+        [size]="'2x'"
+        (click)="onInputClose()"
+      >
+      </fa-icon>
+
+      <fa-icon
+        [icon]="backArrowIcon"
+        class="backarrow-icon"
+        (click)="onLocationClick()"
+      ></fa-icon>
+    </div>
+    <hr />
+    <div class="post-create-content-area" *ngIf="isLocationSelectOpen == false">
+      <div class="user-details-area">
+        <img src="../../../assets/images/user.jpg" alt="" />
+        <p>John Williamson</p>
+      </div>
+      <div class="post-content-typing-area">
+        <textarea name="" id="">What's on your mind...</textarea>
+      </div>
+
+      <div class="post-content-options-area">
+        <p>Add to your post</p>
+
+        <fa-icon [icon]="locationIcon" (click)="onLocationClick()"></fa-icon>
+        <fa-icon [icon]="imagesIcon"></fa-icon>
+      </div>
+
+      <div class="post-submit">
+        <button>Post</button>
+      </div>
+    </div>
+
+    <div class="location-select-container" *ngIf="isLocationSelectOpen">
+      <p>Enter your location:</p>
+      <app-input
+        [icon]="locationSearchIcon"
+        usedComponent="postLocation"
+      ></app-input>
+    </div>
+  </div>
+</div>

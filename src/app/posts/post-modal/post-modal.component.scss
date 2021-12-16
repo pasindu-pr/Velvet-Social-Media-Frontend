@@ -1,0 +1,78 @@
+@import "../../shared/styles/colors.scss";
+
+.post-modal-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+
+  .post-modal-inner {
+    width: 70vw;
+    height: 70vh;
+    background: white;
+    background: $main-color;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    color: white;
+    gap: 15px;
+    position: relative;
+
+    .close-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .post-model-photo {
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .post-model-description {
+      width: 64%;
+      padding-top: 10px;
+      padding-right: 10px;
+
+      hr {
+        border-bottom: none;
+        border: 0.5px solid rgb(235, 235, 235);
+      }
+
+      p {
+        margin: 15px 0;
+        font-size: 14px;
+      }
+
+      .post-model-likes-count {
+        margin: 10px 0;
+      }
+    }
+
+    .reactions-div {
+      padding: 5px;
+    }
+
+    .post-comments {
+      overflow-y: scroll;
+      height: 250px;
+    }
+
+    .post-comment-input-area {
+      margin-top: 15px;
+    }
+  }
+}

@@ -1,0 +1,142 @@
+@import "../../shared/styles/colors.scss";
+
+.post-create-input {
+  margin-top: 10px;
+  height: 8vh;
+  width: 100%;
+  background: $main-color;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  cursor: pointer;
+
+  .user {
+    img {
+      border-radius: 50%;
+      width: 40px;
+    }
+
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .whats-up-text {
+    color: white;
+    margin-left: 20px;
+  }
+
+  .upload-options {
+    color: white;
+    display: flex;
+    gap: 7px;
+  }
+}
+
+.post-create-popup-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+
+  .post-create-popup-inner {
+    width: 37.5rem;
+    background: $main-color;
+    border-radius: 4px;
+    min-height: 20rem;
+
+    .post-create-heading {
+      text-align: center;
+      color: white;
+      padding: 1rem 0;
+      position: relative;
+
+      .close-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      .backarrow-icon {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    hr {
+      border: 0.5px solid rgb(58, 58, 58);
+      border-bottom: none;
+    }
+
+    .user-details-area {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      gap: 10px;
+      color: white;
+      padding: 10px;
+
+      img {
+        width: 40px;
+        border-radius: 50%;
+      }
+    }
+
+    .post-content-typing-area {
+      textarea {
+        width: 100%;
+        height: 20vh;
+        background: transparent;
+        outline: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        padding: 10px;
+      }
+    }
+
+    .post-content-options-area {
+      font-size: 20px;
+      color: white;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      border: 0.5px solid rgb(58, 58, 58);
+    }
+
+    .post-submit {
+      margin-top: 10px;
+      button {
+        width: 100%;
+        height: 50px;
+        background: rgba(1, 3, 37, 0.5);
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 18px;
+      }
+    }
+
+    .location-select-container {
+      padding: 10px;
+      color: white;
+
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

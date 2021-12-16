@@ -1,0 +1,38 @@
+@import "../styles/colors.scss";
+
+.app-input {
+  display: flex;
+  align-items: center;
+
+  input {
+    width: 380px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background: $main-color;
+    color: $font-color;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .locationSelect {
+    background: $main-color-two;
+    width: 100%;
+  }
+
+  .locationInputIcon {
+    background: $main-color-two !important;
+  }
+
+  .input-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $main-color;
+    width: 30px;
+    height: 30px;
+    color: $font-color;
+    border-radius: 0 4px 4px 0;
+  }
+}

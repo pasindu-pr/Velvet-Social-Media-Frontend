@@ -1,0 +1,71 @@
+<div class="post-modal-outer">
+  <div class="post-modal-inner">
+    <fa-icon [icon]="closeIcon" class="close-icon"></fa-icon>
+    <div class="post-model-photo">
+      <img src="../../../assets/images/location1.jpg" alt="" />
+    </div>
+    <div class="post-model-description">
+      <app-user></app-user>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum id
+        delectus similique consequuntur repellendus temporibus sit voluptate,
+        soluta atque! Minima cum doloribus porro ex soluta laborum molestiae,
+        voluptatum laudantium possimus.
+      </p>
+
+      <div class="post-model-likes-count">
+        <span> Liked by Ariana grade and 922,168 others </span>
+      </div>
+
+      <hr />
+      <div class="reactions-div">
+        <app-reactions-area [reactionsCenter]="true"></app-reactions-area>
+      </div>
+      <hr />
+
+      <div class="post-comments">
+        <p>Read more comments</p>
+
+        <div class="post-model-comment">
+          <app-user></app-user>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
+            dignissimos tenetur perferendis laudantium architecto similique
+            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
+            nemo fuga sed reiciendis suscipit?
+          </p>
+        </div>
+
+        <div>
+          <app-user></app-user>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
+            dignissimos tenetur perferendis laudantium architecto similique
+            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
+            nemo fuga sed reiciendis suscipit?
+          </p>
+        </div>
+
+        <div>
+          <app-user></app-user>
+
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
+            dignissimos tenetur perferendis laudantium architecto similique
+            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
+            nemo fuga sed reiciendis suscipit?
+          </p>
+        </div>
+      </div>
+
+      <div class="post-comment-input-area">
+        <app-input
+          placeholder="Enter your comment..."
+          [icon]="rightArrow"
+        ></app-input>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+@import "../../shared/styles/colors.scss";
+
+.post-component-wrapper {
+  width: 100%;
+  background: $main-color;
+  min-height: 10rem;
+  color: white;
+  margin-top: 15px;
+  border-radius: 4px;
+  padding: 10px;
+
+  hr {
+    border: 0.5px solid rgb(119, 119, 119);
+    border-bottom: none;
+  }
+
+  .post-content-text {
+    margin: 15px 0;
+  }
+
+  .post-content-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+    object-fit: cover;
+    margin-bottom: 15px;
+    img {
+      width: 100%;
+    }
+  }
+}

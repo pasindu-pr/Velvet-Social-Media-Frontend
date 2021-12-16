@@ -1,0 +1,14 @@
+<div class="app-input">
+  <input
+    [ngClass]="{ locationSelect: usedComponent === 'postLocation' }"
+    type="{{ inputType }}"
+    [placeholder]="placeholder"
+  />
+  <div
+    [ngClass]="{ locationInputIcon: usedComponent === 'postLocation' }"
+    class="input-icon"
+    *ngIf="icon"
+  >
+    <fa-icon [icon]="icon"></fa-icon>
+  </div>
+</div>
