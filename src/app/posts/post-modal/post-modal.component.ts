@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   faArrowRight,
   faTimes,
@@ -17,4 +17,6 @@ export class PostModalComponent implements OnInit {
 
   rightArrow: IconDefinition = faArrowRight;
   closeIcon: IconDefinition = faTimes;
+
+  @Input() isModelOpen: boolean = false;
 }

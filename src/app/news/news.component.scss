@@ -1,0 +1,17 @@
+.news-page-wrapper {
+  width: 72vw;
+  margin: 0 auto;
+  color: white;
+
+  h2 {
+    margin: 2rem 0;
+  }
+
+  .news-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 10px;
+    margin: 2rem 0;
+  }
+}
