@@ -1,0 +1,30 @@
+.login-page-wrapper {
+  width: 100vw;
+  height: calc(100vh - (7vh + 45px));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .site-description {
+    width: 100%;
+    text-align: center;
+  }
+
+  form {
+    div {
+      margin-top: 1rem;
+    }
+
+    button {
+      width: 100%;
+      height: 30px;
+      margin-top: 1rem;
+      background: transparent;
+      color: white;
+      border: 1px solid #202044;
+      outline: none;
+    }
+  }
+}

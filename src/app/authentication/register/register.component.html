@@ -1,0 +1,40 @@
+<div class="login-page-wrapper">
+  <div class="site-description">
+    <h2>Welcome to VELVET</h2>
+    <p>Enter your details to create your account</p>
+  </div>
+
+  <form action="">
+    <div class="firstname">
+      <label for=""> First Name: </label>
+      <app-input [icon]="emailIcon"></app-input>
+    </div>
+
+    <div class="secondname">
+      <label for=""> Last Name: </label>
+      <app-input [icon]="emailIcon"></app-input>
+    </div>
+
+    <div class="email">
+      <label for=""> Email: </label>
+      <app-input [icon]="emailIcon"></app-input>
+    </div>
+
+    <div class="password">
+      <label for=""> Password: </label>
+      <app-input [icon]="passwordIcon"></app-input>
+    </div>
+
+    <div class="location">
+      <label for=""> Location: </label>
+      <app-input [icon]="passwordIcon"></app-input>
+    </div>
+
+    <div class="birthdate">
+      <label for=""> Birthdate: </label>
+      <app-input [icon]="passwordIcon" [inputType]="'date'"></app-input>
+    </div>
+
+    <button>Create an account</button>
+  </form>
+</div>

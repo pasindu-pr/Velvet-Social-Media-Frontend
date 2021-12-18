@@ -21,6 +21,8 @@ import { ProfileSummaryComponent } from './user-profile/profile-summary/profile-
 import { PhotosComponent } from './user-profile/photos/photos.component';
 import { PhotoComponent } from './user-profile/photos/photo/photo.component';
 import { FriendComponent } from './user-profile/friends/friend/friend.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { RegisterComponent } from './authentication/register/register.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { FriendComponent } from './user-profile/friends/friend/friend.component'
     PhotosComponent,
     PhotoComponent,
     FriendComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],
