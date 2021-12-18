@@ -1,0 +1,33 @@
+.friend-wrapper {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  border: 1px solid #202044;
+  padding: 10px;
+
+  .profile-pic {
+    width: 80px;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .friend-details {
+    span {
+      display: block;
+      font-size: 12px;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    .location-friends {
+      margin-top: 8px;
+    }
+  }
+}

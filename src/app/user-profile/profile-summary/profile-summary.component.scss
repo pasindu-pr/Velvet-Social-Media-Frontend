@@ -1,0 +1,57 @@
+@import "../../shared/styles/colors.scss";
+
+.profile-summary-wrapper {
+  color: white;
+  width: 100%;
+  background: $main-color;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 4px;
+
+  .profile-photo {
+    width: 250px;
+    img {
+      width: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  .website-url {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .profile-statistics {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .name {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    .follow-button {
+      background: transparent;
+      color: white;
+      width: 100px;
+      height: 35px;
+      outline: none;
+      border: 1px solid rgb(109, 109, 109);
+      border-radius: 4px;
+    }
+  }
+
+  .name,
+  .profile-description,
+  .website-url,
+  .profile-statistics {
+    margin-top: 10px;
+  }
+}

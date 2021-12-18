@@ -1,0 +1,17 @@
+.user-profile-wrapper {
+  width: 70vw;
+  margin: 0 auto;
+  color: white;
+
+  .photos-area {
+    text-align: center;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .photos-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 1rem 0;
+  }
+}

@@ -15,6 +15,12 @@ import { ReactionsAreaComponent } from './shared/reactions-area/reactions-area.c
 import { NewsComponent } from './news/news.component';
 import { NewsDescriptionComponent } from './news/news-description/news-description.component';
 import { NewsItemComponent } from './news/news-item/news-item.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { FriendsComponent } from './user-profile/friends/friends.component';
+import { ProfileSummaryComponent } from './user-profile/profile-summary/profile-summary.component';
+import { PhotosComponent } from './user-profile/photos/photos.component';
+import { PhotoComponent } from './user-profile/photos/photo/photo.component';
+import { FriendComponent } from './user-profile/friends/friend/friend.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +36,12 @@ import { NewsItemComponent } from './news/news-item/news-item.component';
     NewsComponent,
     NewsDescriptionComponent,
     NewsItemComponent,
+    UserProfileComponent,
+    FriendsComponent,
+    ProfileSummaryComponent,
+    PhotosComponent,
+    PhotoComponent,
+    FriendComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
   providers: [],

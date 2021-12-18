@@ -1,0 +1,14 @@
+.friends-component-wrapper {
+  width: 70vw;
+  margin: 0 auto;
+  color: white;
+
+  h2 {
+    margin: 1rem 0;
+  }
+
+  .friends {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
