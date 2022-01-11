@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,14 @@ import { PhotoComponent } from './user-profile/photos/photo/photo.component';
 import { FriendComponent } from './user-profile/friends/friend/friend.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { NotificationComponent } from './header/notification/notification.component';
+
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './redux/reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { LocationEffects } from './redux/effects/location.effects';
 
 @NgModule({
   declarations: [
@@ -46,8 +55,18 @@ import { RegisterComponent } from './authentication/register/register.component'
     FriendComponent,
     LoginComponent,
     RegisterComponent,
+    NotificationComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FontAwesomeModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    HttpClientModule,
+    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    EffectsModule.forRoot([LocationEffects]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
