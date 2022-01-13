@@ -1,3 +1,5 @@
+@import "../../shared/styles/colors.scss";
+
 .login-page-wrapper {
   width: 100vw;
   height: calc(100vh - (7vh + 45px));
@@ -15,6 +17,37 @@
   form {
     div {
       margin-top: 1rem;
+    }
+
+    .ng-select.custom {
+      background-color: #202044 !important;
+      color: white !important;
+    }
+    .ng-select.custom ::ng-deep .ng-select-container {
+      background-color: #202044 !important;
+      color: white !important;
+      border: none;
+    }
+
+    .ng-select.custom ::ng-deep .ng-spinner-loader {
+      color: white !important;
+      border-top: 2px solid white;
+      border-right: 2px solid white;
+      border-bottom: 2px solid white;
+      border-left: 2px solid #424242;
+    }
+
+    .ng-select.custom ::ng-deep .ng-clear-wrapper {
+      color: white !important;
+    }
+
+    .ng-select.custom
+      ::ng-deep
+      .ng-select-container
+      .ng-value-container
+      .ng-input
+      > input {
+      color: white !important;
     }
 
     button {

@@ -18,15 +18,5 @@ export class AppComponent implements OnInit {
 
   locations: LocationState;
 
-  ngOnInit() {
-    this.store.dispatch(
-      LocationActions.FETCH_LOCATIONS_REQUEST({ query: 'London' })
-    );
-
-    this.store.select('locationState').subscribe((data) => {
-      this.locations = data;
-
-      console.log(this.locations);
-    });
-  }
+  ngOnInit() {}
 }

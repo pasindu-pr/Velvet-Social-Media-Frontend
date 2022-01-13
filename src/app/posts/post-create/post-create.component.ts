@@ -24,7 +24,7 @@ export class PostCreateComponent implements OnInit {
   locationSearchIcon: IconDefinition = faSearchLocation;
   backArrowIcon: IconDefinition = faArrowLeft;
 
-  isModelOpen: boolean = false;
+  isModelOpen: boolean = true;
   isLocationSelectOpen: boolean = false;
 
   onInputClick() {

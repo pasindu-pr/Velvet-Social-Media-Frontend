@@ -7,13 +7,19 @@
   justify-content: center;
   flex-direction: column;
 
+  .site-description {
+    width: 100%;
+    text-align: center;
+  }
+
+  .login-text {
+    margin-top: 10px;
+    text-align: center;
+  }
+
   form {
     div {
       margin-top: 1rem;
-    }
-
-    .site-description {
-      width: 100%;
     }
 
     button {
@@ -24,6 +30,7 @@
       color: white;
       border: 1px solid #202044;
       outline: none;
+      cursor: pointer;
     }
   }
 }

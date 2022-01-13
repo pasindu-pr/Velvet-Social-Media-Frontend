@@ -3,6 +3,10 @@
     [ngClass]="{ locationSelect: usedComponent === 'postLocation' }"
     type="{{ inputType }}"
     [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    #appInput
+    (input)="onChange(appInput.value)"
   />
   <div
     [ngClass]="{ locationInputIcon: usedComponent === 'postLocation' }"

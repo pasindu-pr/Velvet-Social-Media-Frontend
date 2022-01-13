@@ -25,14 +25,23 @@
       <app-input [icon]="passwordIcon"></app-input>
     </div>
 
-    <div class="location">
-      <label for=""> Location: </label>
-      <app-input [icon]="passwordIcon"></app-input>
-    </div>
-
     <div class="birthdate">
       <label for=""> Birthdate: </label>
       <app-input [icon]="passwordIcon" [inputType]="'date'"></app-input>
+    </div>
+
+    <div class="location">
+      <label for=""> Location: </label>
+      <ng-select
+        class="custom"
+        (search)="onSearch($event)"
+        [(ngModel)]="selectedLocation"
+        [loading]="isSelectLoading"
+      >
+        <ng-option *ngFor="let location of locations" [value]="location.city">
+          {{ location.city }}, {{ location.region }}, {{ location.country }}
+        </ng-option>
+      </ng-select>
     </div>
 
     <button>Create an account</button>

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +35,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { LocationEffects } from './redux/effects/location.effects';
+import { LoginEffects } from './redux/effects/login.effects';
+import { AppLoadingComponent } from './shared/app-loading/app-loading.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +61,7 @@ import { LocationEffects } from './redux/effects/location.effects';
     LoginComponent,
     RegisterComponent,
     NotificationComponent,
+    AppLoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,10 @@ import { LocationEffects } from './redux/effects/location.effects';
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([LocationEffects]),
+    EffectsModule.forRoot([LocationEffects, LoginEffects]),
+    FormsModule,
+    NgSelectModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

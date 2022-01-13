@@ -1,17 +1,32 @@
 <div class="login-page-wrapper">
+  <app-loading *ngIf="isLoading"></app-loading>
   <div class="site-description">
     <h2>Welcome to VELVET</h2>
+    <p class="login-text">Enter your credentials to login!</p>
+    <p class="login-text error-text" *ngIf="!isFormValid">{{ formError }}</p>
   </div>
 
-  <form action="">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)">
     <div class="email">
       <label for=""> Email: </label>
-      <app-input [icon]="emailIcon"></app-input>
+      <app-input
+        inputType="email"
+        [icon]="emailIcon"
+        formControlName="email"
+        email
+        required
+      ></app-input>
     </div>
 
     <div class="password">
       <label for=""> Password: </label>
-      <app-input [icon]="passwordIcon"></app-input>
+      <app-input
+        minlength="8"
+        [icon]="passwordIcon"
+        formControlName="password"
+        inputType="password"
+        required
+      ></app-input>
     </div>
 
     <button>Login</button>
