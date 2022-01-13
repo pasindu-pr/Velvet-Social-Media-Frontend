@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   faEnvelope,
   faKey,
@@ -16,9 +16,20 @@ import * as LoginActions from '../../redux/actions/login.actions';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private store: Store<ApplicationState>) {}
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<ApplicationState>
+  ) {}
+
+  isRegistered = false;
 
   ngOnInit() {
+    this.route.queryParamMap.subscribe((data) => {
+      if (data.get('referer') == 'register') {
+        this.hasReferer = 'Your account was created successfully';
+      }
+    });
+
     this.store.select('loginState').subscribe((data) => {
       if (data.success == false && data.error) {
         this.isFormValid = false;
@@ -35,6 +46,7 @@ export class LoginComponent implements OnInit {
   isFormValid: boolean = true;
   formError: string = ' ';
   isLoading = false;
+  hasReferer: string;
 
   loginForm = new FormGroup({
     email: new FormControl(''),

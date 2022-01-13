@@ -2,6 +2,7 @@
   <app-loading *ngIf="isLoading"></app-loading>
   <div class="site-description">
     <h2>Welcome to VELVET</h2>
+    <p class="login-text error-text" *ngIf="hasReferer">{{ hasReferer }}</p>
     <p class="login-text">Enter your credentials to login!</p>
     <p class="login-text error-text" *ngIf="!isFormValid">{{ formError }}</p>
   </div>

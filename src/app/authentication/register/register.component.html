@@ -1,33 +1,56 @@
+<app-loading *ngIf="isFormLoading"></app-loading>
 <div class="login-page-wrapper">
   <div class="site-description">
     <h2>Welcome to VELVET</h2>
     <p>Enter your details to create your account</p>
+    <p class="login-text error-text" *ngIf="!isFormValid">{{ formError }}</p>
   </div>
 
-  <form action="">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit($event)">
     <div class="firstname">
       <label for=""> First Name: </label>
-      <app-input [icon]="emailIcon"></app-input>
+      <app-input
+        formControlName="first_name"
+        required
+        [icon]="emailIcon"
+      ></app-input>
     </div>
 
     <div class="secondname">
       <label for=""> Last Name: </label>
-      <app-input [icon]="emailIcon"></app-input>
+      <app-input
+        formControlName="last_name"
+        required
+        [icon]="emailIcon"
+      ></app-input>
     </div>
 
     <div class="email">
       <label for=""> Email: </label>
-      <app-input [icon]="emailIcon"></app-input>
+      <app-input
+        formControlName="email"
+        required
+        [icon]="emailIcon"
+      ></app-input>
     </div>
 
     <div class="password">
       <label for=""> Password: </label>
-      <app-input [icon]="passwordIcon"></app-input>
+      <app-input
+        formControlName="password"
+        required
+        [icon]="passwordIcon"
+      ></app-input>
     </div>
 
     <div class="birthdate">
       <label for=""> Birthdate: </label>
-      <app-input [icon]="passwordIcon" [inputType]="'date'"></app-input>
+      <app-input
+        formControlName="birthdate"
+        [icon]="passwordIcon"
+        [inputType]="'date'"
+        required
+      ></app-input>
     </div>
 
     <div class="location">
@@ -35,10 +58,10 @@
       <ng-select
         class="custom"
         (search)="onSearch($event)"
-        [(ngModel)]="selectedLocation"
         [loading]="isSelectLoading"
+        formControlName="location"
       >
-        <ng-option *ngFor="let location of locations" [value]="location.city">
+        <ng-option *ngFor="let location of locations" [value]="location">
           {{ location.city }}, {{ location.region }}, {{ location.country }}
         </ng-option>
       </ng-select>

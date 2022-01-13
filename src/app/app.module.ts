@@ -37,6 +37,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { LocationEffects } from './redux/effects/location.effects';
 import { LoginEffects } from './redux/effects/login.effects';
 import { AppLoadingComponent } from './shared/app-loading/app-loading.component';
+import { UserSignupEffects } from './redux/effects/singup.effects';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -71,12 +73,12 @@ import { AppLoadingComponent } from './shared/app-loading/app-loading.component'
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([LocationEffects, LoginEffects]),
+    EffectsModule.forRoot([LocationEffects, LoginEffects, UserSignupEffects]),
     FormsModule,
     NgSelectModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
