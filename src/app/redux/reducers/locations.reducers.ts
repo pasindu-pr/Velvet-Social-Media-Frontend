@@ -37,5 +37,9 @@ export const locationReducer = createReducer(
     loading: false,
     locationData: [],
     error: error,
+  })),
+
+  on(LocationActions.FETCH_LOCATIONS_RESET, (state) => ({
+    ...initialState,
   }))
 );

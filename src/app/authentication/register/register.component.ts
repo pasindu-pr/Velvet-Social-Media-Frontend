@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
   IconDefinition,
@@ -22,7 +22,7 @@ interface Event {
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<ApplicationState>,
     private datePipe: DatePipe
@@ -38,6 +38,10 @@ export class RegisterComponent implements OnInit {
       this.isFormLoading = data.loading;
       this.isFormValid = data.success;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(LocationActios.FETCH_LOCATIONS_RESET());
   }
 
   emailIcon: IconDefinition = faEnvelope;

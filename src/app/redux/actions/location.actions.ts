@@ -16,10 +16,15 @@ export const FETCH_LOCATIONS_ERROR = createAction(
   props<{ error: string }>()
 );
 
+export const FETCH_LOCATIONS_RESET = createAction(
+  '[LOCATIONS] Location Results Reset'
+);
+
 const actions = union({
   FETCH_LOCATIONS_REQUEST,
   FETCH_LOCATIONS_SUCCESS,
   FETCH_LOCATIONS_ERROR,
+  FETCH_LOCATIONS_RESET,
 });
 
 export type LOCATION_ACTIONS = typeof actions;

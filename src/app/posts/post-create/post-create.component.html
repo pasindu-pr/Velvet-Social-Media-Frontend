@@ -35,7 +35,13 @@
     <div class="post-create-content-area" *ngIf="isLocationSelectOpen == false">
       <div class="user-details-area">
         <img src="../../../assets/images/user.jpg" alt="" />
-        <p>John Williamson</p>
+        <span class="post-create-username">
+          John Williamson
+          <span *ngIf="selectedLocation">
+            is at {{ selectedLocation }}
+            <fa-icon [icon]="locationIcon"></fa-icon>
+          </span>
+        </span>
       </div>
       <div class="post-content-typing-area">
         <textarea name="" id="">What's on your mind...</textarea>
@@ -54,36 +60,27 @@
     </div>
 
     <div class="location-select-container" *ngIf="isLocationSelectOpen">
-      <p>Enter your location:</p>
-      <app-input
-        [icon]="locationSearchIcon"
-        usedComponent="postLocation"
-      ></app-input>
+      <form [formGroup]="locationSearchForm">
+        <p>Enter your location:</p>
+        <app-input
+          [icon]="locationSearchIcon"
+          usedComponent="postLocation"
+          inputType="text"
+          formControlName="locationQuery"
+          (ngModelChange)="handleLocationChange($event)"
+        ></app-input>
+      </form>
 
       <div class="location-select-div">
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
-
-        <p class="location-item">Location 1</p>
-        <hr />
+        <div
+          *ngFor="let location of locations; index as i"
+          (click)="handleLocationSelect(i)"
+        >
+          <p class="location-item">
+            {{ location.city }}, {{ location.region }}, {{ location.country }}
+          </p>
+          <hr />
+        </div>
       </div>
     </div>
   </div>

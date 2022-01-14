@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -39,6 +39,7 @@ import { LoginEffects } from './redux/effects/login.effects';
 import { AppLoadingComponent } from './shared/app-loading/app-loading.component';
 import { UserSignupEffects } from './redux/effects/singup.effects';
 import { DatePipe } from '@angular/common';
+import { AppInterceptor } from './shared/interceptor/interceptor';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,10 @@ import { DatePipe } from '@angular/common';
     NgSelectModule,
     ReactiveFormsModule,
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    { provide: HTTP_INTERCEPTORS, useClass: AppInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
