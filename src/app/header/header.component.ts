@@ -8,6 +8,9 @@ import {
   faNewspaper,
   faPeopleArrows,
 } from '@fortawesome/free-solid-svg-icons';
+import { Store } from '@ngrx/store';
+import { ApplicationState } from '../redux/reducers';
+import * as CurrentUserActions from '../redux/actions/currentUser.actions';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +18,7 @@ import {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store<ApplicationState>) {}
 
   questionCircleIcon = faQuestionCircle;
   envelopeIcon = faEnvelope;
@@ -25,5 +28,7 @@ export class HeaderComponent implements OnInit {
   newsIcon = faNewspaper;
   peopleIcon = faPeopleArrows;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(CurrentUserActions.FETCH_CURRENT_USER_REQUEST());
+  }
 }

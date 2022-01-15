@@ -41,6 +41,7 @@ import { UserSignupEffects } from './redux/effects/singup.effects';
 import { DatePipe } from '@angular/common';
 import { AppInterceptor } from './shared/interceptor/interceptor';
 import { TimelineEffects } from './redux/effects/timeline.effects';
+import { CurrentUserEffects } from './redux/effects/currentUser.effects';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { TimelineEffects } from './redux/effects/timeline.effects';
       LoginEffects,
       UserSignupEffects,
       TimelineEffects,
+      CurrentUserEffects,
     ]),
     FormsModule,
     NgSelectModule,

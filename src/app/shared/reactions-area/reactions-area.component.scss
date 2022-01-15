@@ -5,4 +5,10 @@
   height: 30px;
   gap: 20px;
   margin-top: 4px;
+
+  .like-icon,
+  .share-icon,
+  .comment-icon {
+    cursor: pointer;
+  }
 }

@@ -12,6 +12,7 @@
         [userProfilePic]="post.user.profile_picture"
         [postImage]="post.photos"
         [createdAt]="post.created_at"
+        [likes]="post.likes"
       ></app-post>
     </div>
 
@@ -31,8 +32,13 @@
         [sharedUserProfilePic]="post.user.profile_picture"
         [sharedText]="post.shared_content"
         [sharedTime]="post.created_at"
+        [likes]="post.post.likes"
       ></app-post>
     </div>
   </div>
+</div>
+
+<div style="color: white; text-align: center; margin: 20px 0">
+  <span>You caught everyting! Make more friends to see more posts!</span>
 </div>
 <!-- <app-post-modal></app-post-modal> -->

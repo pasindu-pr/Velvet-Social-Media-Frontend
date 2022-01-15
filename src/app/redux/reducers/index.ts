@@ -1,5 +1,6 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
+import { currentUserReducer, CurrentUserState } from './currentUser.reducers';
 import { locationReducer, LocationState } from './locations.reducers';
 import { LoginReducer, LoginState } from './login.reducers';
 import {
@@ -13,6 +14,7 @@ export interface ApplicationState {
   loginState: LoginState;
   userRegisterState: UserRegisterInitialState;
   timelinePostsState: TimelineState;
+  currentUserState: CurrentUserState;
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
@@ -20,6 +22,7 @@ export const reducers: ActionReducerMap<ApplicationState> = {
   loginState: LoginReducer,
   userRegisterState: UserRegisterReducer,
   timelinePostsState: TimelinePostsReducer,
+  currentUserState: currentUserReducer,
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] =
