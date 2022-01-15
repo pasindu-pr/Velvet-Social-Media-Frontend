@@ -1,23 +1,48 @@
 <div class="post-component-wrapper">
-  <div class="post-component-user">
-    <app-user></app-user>
-  </div>
-
-  <div class="post-content-text">
-    <p>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo consectetur
-      earum aperiam magnam quia quam distinctio natus porro facilis deserunt,
-      amet fugiat, perferendis, quod nam ut incidunt corrupti explicabo eos?
+  <div *ngIf="isShared" class="shared-post-text">
+    <p class="shared-post-notify">
+      {{ sharedUserUsername }} shared {{ username }}'s post.
     </p>
-  </div>
-  <div class="post-content-photos">
-    <img src="../../../assets/images/location1.jpg" alt="" />
-    <img src="../../../assets/images/location2.jpg" alt="" />
-    <img src="../../../assets/images/location3.jpg" alt="" />
-  </div>
-  <hr />
+    <hr />
 
-  <div>
-    <app-reactions-area></app-reactions-area>
+    <div class="shared-user">
+      <app-user
+        [username]="sharedUserUsername"
+        [profilePic]="sharedUserProfilePic"
+        [createdAt]="sharedTime"
+      ></app-user>
+      <p>{{ sharedText }}</p>
+    </div>
+
+    <hr />
+  </div>
+
+  <div [ngClass]="{ 'shared-post-wrapper': isShared }">
+    <div class="post-component-user">
+      <app-user
+        [username]="username"
+        [profilePic]="userProfilePic"
+        [location]="location"
+        [createdAt]="createdAt"
+      ></app-user>
+    </div>
+
+    <div class="post-content-text">
+      <p>
+        {{ postContent }}
+      </p>
+    </div>
+    <div class="post-content-photos">
+      <img src="{{ getImageLink() }}" alt="" />
+    </div>
+    <hr />
+
+    <div>
+      <app-reactions-area
+        [likesCount]="likesCount"
+        [commentsCount]="commentsCount"
+        [sharesCount]="sharesCount"
+      ></app-reactions-area>
+    </div>
   </div>
 </div>

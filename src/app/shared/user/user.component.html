@@ -1,5 +1,19 @@
 <div class="user-wrapper">
-  <img src="../../../assets/images/user.jpg" alt="" />
+  <img *ngIf="profilePic" src="{{ profilePic }}" alt="" />
+  <img
+    *ngIf="!profilePic"
+    src="../../../assets/images/profilepic-default.png"
+    alt=""
+  />
 
-  <p>Victoria Jury</p>
+  <span class="username">
+    <span class="name-checkin">
+      <b> {{ username }} </b>
+      <span class="user-check-in" *ngIf="location">
+        is at <b> {{ location }} </b> <fa-icon [icon]="locationIcon"> </fa-icon>
+      </span>
+    </span>
+
+    <span class="time-posted"> {{ getCreatedDate() }} </span>
+  </span>
 </div>

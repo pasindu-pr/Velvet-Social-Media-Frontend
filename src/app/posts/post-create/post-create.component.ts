@@ -28,7 +28,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   locationSearchIcon: IconDefinition = faSearchLocation;
   backArrowIcon: IconDefinition = faArrowLeft;
 
-  isModelOpen: boolean = true;
+  isModelOpen: boolean = false;
   isLocationSelectOpen: boolean = false;
   selectedLocation: string;
 

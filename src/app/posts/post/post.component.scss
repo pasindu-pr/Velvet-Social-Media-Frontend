@@ -14,18 +14,35 @@
     border-bottom: none;
   }
 
+  .shared-post-notify {
+    margin: 5px 0 8px 0;
+  }
+
+  .shared-user {
+    margin: 10px;
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  .shared-post-wrapper {
+    padding: 40px;
+  }
+
   .post-content-text {
     margin: 15px 0;
   }
 
   .post-content-photos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     object-fit: cover;
     margin-bottom: 15px;
+    width: 100%;
+
     img {
       width: 100%;
+      object-fit: cover;
     }
   }
 }

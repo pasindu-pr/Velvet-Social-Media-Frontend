@@ -21,4 +21,8 @@ export class ReactionsAreaComponent implements OnInit {
   shareIcon: IconDefinition = faShare;
 
   @Input() reactionsCenter: boolean = false;
+
+  @Input() likesCount: number;
+  @Input() commentsCount: number;
+  @Input() sharesCount: number;
 }

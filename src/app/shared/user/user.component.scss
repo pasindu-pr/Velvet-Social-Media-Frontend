@@ -4,6 +4,23 @@
     border-radius: 50%;
   }
 
+  .username {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    .user-check-in {
+      font-size: 16px;
+    }
+
+    .time-posted {
+      font-size: 12px;
+      color: rgb(185, 185, 185);
+    }
+  }
+
   display: flex;
   align-items: center;
   gap: 10px;

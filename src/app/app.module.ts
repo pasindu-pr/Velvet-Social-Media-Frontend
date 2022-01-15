@@ -40,6 +40,7 @@ import { AppLoadingComponent } from './shared/app-loading/app-loading.component'
 import { UserSignupEffects } from './redux/effects/singup.effects';
 import { DatePipe } from '@angular/common';
 import { AppInterceptor } from './shared/interceptor/interceptor';
+import { TimelineEffects } from './redux/effects/timeline.effects';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,12 @@ import { AppInterceptor } from './shared/interceptor/interceptor';
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([LocationEffects, LoginEffects, UserSignupEffects]),
+    EffectsModule.forRoot([
+      LocationEffects,
+      LoginEffects,
+      UserSignupEffects,
+      TimelineEffects,
+    ]),
     FormsModule,
     NgSelectModule,
     ReactiveFormsModule,
