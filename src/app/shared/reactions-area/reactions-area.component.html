@@ -6,6 +6,7 @@
     <fa-icon
       [icon]="hasLiked ? heartIcon : regularHeartIcon"
       class="like-icon"
+      (click)="likePost()"
     ></fa-icon>
     {{ likesCount }}
   </div>

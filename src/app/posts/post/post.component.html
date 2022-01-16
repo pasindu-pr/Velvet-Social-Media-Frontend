@@ -27,12 +27,20 @@
       ></app-user>
     </div>
 
-    <div class="post-content-text">
+    <div
+      class="post-content-text"
+      style="cursor: pointer"
+      (click)="onPostContentClick()"
+    >
       <p>
         {{ postContent }}
       </p>
     </div>
-    <div class="post-content-photos">
+    <div
+      class="post-content-photos"
+      style="cursor: pointer"
+      (click)="onPostContentClick()"
+    >
       <img src="{{ getImageLink() }}" alt="" />
     </div>
     <hr />
@@ -43,6 +51,7 @@
         [commentsCount]="commentsCount"
         [sharesCount]="sharesCount"
         [hasLiked]="isCurrentUserLiked()"
+        [postID]="postID"
       ></app-reactions-area>
     </div>
   </div>

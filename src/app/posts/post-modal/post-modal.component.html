@@ -1,61 +1,62 @@
 <div class="post-modal-outer">
   <div class="post-modal-inner">
-    <fa-icon [icon]="closeIcon" class="close-icon"></fa-icon>
+    <fa-icon
+      [icon]="closeIcon"
+      class="close-icon"
+      (click)="onCloseModel()"
+    ></fa-icon>
     <div class="post-model-photo">
-      <img src="../../../assets/images/location1.jpg" alt="" />
+      <img [src]="getImageUrl()" alt="" />
     </div>
     <div class="post-model-description">
-      <app-user></app-user>
+      <app-user
+        [username]="currentPost.user.profile_picture"
+        [username]="currentPost.user.full_name"
+        [location]="currentPost.location"
+        [createdAt]="currentPost.created_at"
+      ></app-user>
       <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum id
-        delectus similique consequuntur repellendus temporibus sit voluptate,
-        soluta atque! Minima cum doloribus porro ex soluta laborum molestiae,
-        voluptatum laudantium possimus.
+        {{ currentPost.content }}
       </p>
 
-      <div class="post-model-likes-count">
-        <span> Liked by Ariana grade and 922,168 others </span>
+      <div class="post-model-likes-count" *ngIf="getLikesCount() > 0">
+        <span>
+          Liked by {{ getFirstLikeUserName() }}
+          <span *ngIf="getLikesCount() > 1">
+            and {{ getLikesCount() - 1 }} others
+          </span>
+        </span>
       </div>
 
       <hr />
       <div class="reactions-div">
-        <app-reactions-area [reactionsCenter]="true"></app-reactions-area>
+        <app-reactions-area
+          [likesCount]="getLikesCount()"
+          [commentsCount]="comments.length"
+          [sharesCount]="numberOfShares"
+          [reactionsCenter]="true"
+          [hasLiked]="isCurrentUserLiked()"
+          [postID]="currentPost.id"
+        ></app-reactions-area>
       </div>
       <hr />
 
       <div class="post-comments">
-        <p>Read more comments</p>
+        <!-- <p>Read more comments</p> -->
 
-        <div class="post-model-comment">
-          <app-user></app-user>
-
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
-            dignissimos tenetur perferendis laudantium architecto similique
-            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
-            nemo fuga sed reiciendis suscipit?
-          </p>
-        </div>
-
-        <div>
-          <app-user></app-user>
+        <div
+          class="post-model-comment"
+          style="margin-top: 10px"
+          *ngFor="let comment of comments"
+        >
+          <app-user
+            [username]="comment.user.full_name"
+            [profilePic]="comment.user.profile_picture"
+            [createdAt]="comment.created_at"
+          ></app-user>
 
           <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
-            dignissimos tenetur perferendis laudantium architecto similique
-            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
-            nemo fuga sed reiciendis suscipit?
-          </p>
-        </div>
-
-        <div>
-          <app-user></app-user>
-
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maxime
-            dignissimos tenetur perferendis laudantium architecto similique
-            commodi at sequi voluptatem, ipsa necessitatibus sit aut earum. Ipsa
-            nemo fuga sed reiciendis suscipit?
+            {{ comment.content }}
           </p>
         </div>
       </div>

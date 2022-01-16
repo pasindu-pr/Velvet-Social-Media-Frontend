@@ -5,6 +5,7 @@ import { ApplicationState } from './redux/reducers';
 import { LocationState } from './redux/reducers/locations.reducers';
 import { ILocation } from './shared/Models/Location';
 import * as LocationActions from './redux/actions/location.actions';
+import * as PostModelActions from './redux/actions/postModel.actions';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -25,10 +26,16 @@ export class AppComponent implements OnInit {
   locations: LocationState;
 
   ngOnInit() {
-    this.http
-      .get(`${environment.backendUrl}/auth/users/me/`)
-      .subscribe((res) => {
-        console.log(res);
-      });
+    // this.http
+    //   .get(`${environment.backendUrl}/auth/users/me/`)
+    //   .subscribe((res) => {
+    //     console.log(res);
+    //   });
+
+    this.store.select('postModelState').subscribe((data) => {
+      this.isModelOpen = data.isModelOpen;
+    });
   }
+
+  isModelOpen: boolean;
 }

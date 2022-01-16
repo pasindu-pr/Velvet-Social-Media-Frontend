@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { IPhoto } from 'src/app/shared/Models/Post';
 import { IUser } from 'src/app/shared/Models/user';
+import * as PostModelActions from '../../redux/actions/postModel.actions';
 
 @Component({
   selector: 'app-post',
@@ -18,10 +19,9 @@ export class PostComponent implements OnInit {
     this.store.select('currentUserState').subscribe((data) => {
       this.currentUser = data.user;
     });
-
-    this.isCurrentUserLiked();
   }
 
+  @Input() postID: number;
   @Input() postContent: string;
   @Input() postImage: IPhoto[];
   @Input() location: string;
@@ -42,7 +42,7 @@ export class PostComponent implements OnInit {
   @Input() likes: [];
 
   isCurrentUserLiked() {
-    return this.likes.some(
+    return this.likes?.some(
       (like: {
         id: number;
         user: {
@@ -56,5 +56,11 @@ export class PostComponent implements OnInit {
 
   getImageLink() {
     return this.postImage[0] ? this.postImage[0].image_link : '';
+  }
+
+  onPostContentClick() {
+    this.store.dispatch(
+      PostModelActions.FETCH_POST_MODEL_DETAILS_REQUEST({ postid: this.postID })
+    );
   }
 }

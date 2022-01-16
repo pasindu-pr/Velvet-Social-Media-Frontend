@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { currentUserReducer, CurrentUserState } from './currentUser.reducers';
 import { locationReducer, LocationState } from './locations.reducers';
 import { LoginReducer, LoginState } from './login.reducers';
+import { postModelReducer, PostModelState } from './postModel.reducers';
 import {
   UserRegisterInitialState,
   UserRegisterReducer,
@@ -15,6 +16,7 @@ export interface ApplicationState {
   userRegisterState: UserRegisterInitialState;
   timelinePostsState: TimelineState;
   currentUserState: CurrentUserState;
+  postModelState: PostModelState;
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
@@ -23,6 +25,7 @@ export const reducers: ActionReducerMap<ApplicationState> = {
   userRegisterState: UserRegisterReducer,
   timelinePostsState: TimelinePostsReducer,
   currentUserState: currentUserReducer,
+  postModelState: postModelReducer,
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] =

@@ -3,6 +3,7 @@
   <div class="timeline-posts" *ngFor="let post of posts; index as i">
     <div class="original-post" *ngIf="!post.is_shared_post">
       <app-post
+        [postID]="post.id"
         [postContent]="post.content"
         [location]="post.location"
         [likesCount]="post.likes_count"
@@ -18,6 +19,7 @@
 
     <div class="shared-post" *ngIf="post.is_shared_post">
       <app-post
+        [postID]="post.post.id"
         [postContent]="post.post.content"
         [location]="post.post.location"
         [likesCount]="post.post.likes_count"
@@ -41,4 +43,3 @@
 <div style="color: white; text-align: center; margin: 20px 0">
   <span>You caught everyting! Make more friends to see more posts!</span>
 </div>
-<!-- <app-post-modal></app-post-modal> -->

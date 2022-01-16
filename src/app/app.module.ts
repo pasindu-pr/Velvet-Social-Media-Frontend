@@ -42,6 +42,7 @@ import { DatePipe } from '@angular/common';
 import { AppInterceptor } from './shared/interceptor/interceptor';
 import { TimelineEffects } from './redux/effects/timeline.effects';
 import { CurrentUserEffects } from './redux/effects/currentUser.effects';
+import { PostModelEffects } from './redux/effects/postModel.effects';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { CurrentUserEffects } from './redux/effects/currentUser.effects';
       UserSignupEffects,
       TimelineEffects,
       CurrentUserEffects,
+      PostModelEffects,
     ]),
     FormsModule,
     NgSelectModule,
