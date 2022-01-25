@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import {
   faArrowRight,
   faTimes,
@@ -8,6 +10,7 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { IPost, IPostComment, IPostLike } from 'src/app/shared/Models/Post';
 import { IUser } from 'src/app/shared/Models/user';
+import { environment } from 'src/environments/environment';
 import * as PostModelActions from '../../redux/actions/postModel.actions';
 
 @Component({
@@ -16,7 +19,10 @@ import * as PostModelActions from '../../redux/actions/postModel.actions';
   styleUrls: ['./post-modal.component.scss'],
 })
 export class PostModalComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(
+    private store: Store<ApplicationState>,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.store.select('postModelState').subscribe((data) => {
@@ -43,6 +49,14 @@ export class PostModalComponent implements OnInit {
 
   currentUser: IUser;
 
+  commentForm = new FormGroup({
+    comment: new FormControl(),
+  });
+
+  onSubmit() {
+    console.log('Submit');
+  }
+
   onCloseModel() {
     this.store.dispatch(PostModelActions.POST_MODEL_RESET());
   }
@@ -59,6 +73,30 @@ export class PostModalComponent implements OnInit {
 
   getLikesCount() {
     return this.postLikes.length;
+  }
+
+  onCommentSubmitButtonClicked() {
+    this.http
+      .post(
+        `${environment.backendUrl}/socialmedia/posts/${this.currentPost.id}/comments/`,
+        {
+          content: this.commentForm.value['comment'],
+        },
+        { observe: 'response' }
+      )
+      .subscribe((response) => {
+        if (response.status == 201) {
+          this.store.dispatch(
+            PostModelActions.FETCH_POST_MODEL_DETAILS_REQUEST({
+              postid: this.currentPost.id,
+            })
+          );
+
+          this.commentForm.markAsPristine();
+        } else {
+          alert('Something went wrong!');
+        }
+      });
   }
 
   isCurrentUserLiked() {

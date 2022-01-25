@@ -1,4 +1,12 @@
-import { Component, Input, OnInit, Optional, Self } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Optional,
+  Output,
+  Self,
+} from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
@@ -12,6 +20,8 @@ export class AppInputComponent implements OnInit, ControlValueAccessor {
   @Input() icon: IconDefinition = null as any;
   @Input() usedComponent: string = '';
   @Input() placeholder: string = '';
+
+  @Output() submitButtonClicked = new EventEmitter<boolean>();
 
   @Input() disabled: boolean;
   value: any = '';
@@ -29,6 +39,11 @@ export class AppInputComponent implements OnInit, ControlValueAccessor {
   onChange: any = (e: EventTarget) => {
     console.log(e);
   };
+
+  onIconClick() {
+    this.submitButtonClicked.emit();
+    this.value = '';
+  }
 
   onTouched: any = () => {};
 

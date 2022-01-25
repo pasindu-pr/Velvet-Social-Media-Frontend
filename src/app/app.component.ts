@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { props, Store } from '@ngrx/store';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ApplicationState } from './redux/reducers';
 import { LocationState } from './redux/reducers/locations.reducers';
-import { ILocation } from './shared/Models/Location';
-import * as LocationActions from './redux/actions/location.actions';
-import * as PostModelActions from './redux/actions/postModel.actions';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',

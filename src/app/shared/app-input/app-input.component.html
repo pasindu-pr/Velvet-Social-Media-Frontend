@@ -13,6 +13,10 @@
     class="input-icon"
     *ngIf="icon"
   >
-    <fa-icon [icon]="icon"></fa-icon>
+    <fa-icon
+      style="cursor: pointer"
+      [icon]="icon"
+      (click)="onIconClick()"
+    ></fa-icon>
   </div>
 </div>

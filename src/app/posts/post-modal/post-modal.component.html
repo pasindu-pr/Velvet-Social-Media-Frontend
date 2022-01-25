@@ -4,6 +4,7 @@
       [icon]="closeIcon"
       class="close-icon"
       (click)="onCloseModel()"
+      style="cursor: pointer; z-index: 10"
     ></fa-icon>
     <div class="post-model-photo">
       <img [src]="getImageUrl()" alt="" />
@@ -62,10 +63,14 @@
       </div>
 
       <div class="post-comment-input-area">
-        <app-input
-          placeholder="Enter your comment..."
-          [icon]="rightArrow"
-        ></app-input>
+        <form [formGroup]="commentForm">
+          <app-input
+            placeholder="Enter your comment..."
+            [icon]="rightArrow"
+            formControlName="comment"
+            (submitButtonClicked)="onCommentSubmitButtonClicked()"
+          ></app-input>
+        </form>
       </div>
     </div>
   </div>

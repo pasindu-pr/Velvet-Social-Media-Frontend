@@ -43,6 +43,8 @@ import { AppInterceptor } from './shared/interceptor/interceptor';
 import { TimelineEffects } from './redux/effects/timeline.effects';
 import { CurrentUserEffects } from './redux/effects/currentUser.effects';
 import { PostModelEffects } from './redux/effects/postModel.effects';
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,8 @@ import { PostModelEffects } from './redux/effects/postModel.effects';
     FormsModule,
     NgSelectModule,
     ReactiveFormsModule,
+    LoadingBarHttpClientModule,
+    LoadingBarRouterModule,
   ],
   providers: [
     DatePipe,
