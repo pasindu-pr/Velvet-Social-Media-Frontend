@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from './redux/reducers';
 import { LocationState } from './redux/reducers/locations.reducers';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<ApplicationState>,
-    private http: HttpClient
+    private http: HttpClient,
+    private toastService: ToastrService
   ) {}
 
   locations: LocationState;
@@ -27,6 +29,13 @@ export class AppComponent implements OnInit {
     //   .subscribe((res) => {
     //     console.log(res);
     //   });
+
+    this.toastService.info('Hello world!', 'Toastr fun!', {
+      progressBar: true,
+      positionClass: 'toast-bottom-right',
+      closeButton: true,
+      timeOut: 5000,
+    });
 
     this.store.select('postModelState').subscribe((data) => {
       this.isModelOpen = data.isModelOpen;

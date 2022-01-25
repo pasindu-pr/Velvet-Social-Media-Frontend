@@ -46,6 +46,9 @@ import { PostModelEffects } from './redux/effects/postModel.effects';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -76,6 +79,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
@@ -92,6 +96,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
     ReactiveFormsModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     DatePipe,
