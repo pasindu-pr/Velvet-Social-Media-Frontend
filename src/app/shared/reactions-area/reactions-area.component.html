@@ -17,7 +17,34 @@
   </div>
 
   <div class="reaction">
-    <fa-icon [icon]="shareIcon" class="share-icon"></fa-icon>
+    <fa-icon
+      [icon]="shareIcon"
+      class="share-icon"
+      (click)="sharePost()"
+    ></fa-icon>
     {{ sharesCount }}
   </div>
+
+  <form [formGroup]="sharePostForm" (submit)="onSharePost()">
+    <div *ngIf="isPostShareModelOpen" class="post-share-popup">
+      <fa-icon
+        [icon]="closeIcon"
+        class="close-icon"
+        (click)="onCloseModel()"
+        style="cursor: pointer; z-index: 10"
+      ></fa-icon>
+
+      <span class="share-post"> Share Post </span>
+
+      <div class="input">
+        <textarea cols="30" rows="10" formControlName="sharedContent">
+ Say something about this! </textarea
+        >
+      </div>
+
+      <div class="button">
+        <button>Share</button>
+      </div>
+    </div>
+  </form>
 </div>

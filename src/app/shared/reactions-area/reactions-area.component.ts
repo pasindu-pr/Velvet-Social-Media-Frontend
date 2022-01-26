@@ -3,6 +3,7 @@ import {
   faComment,
   faHeart,
   faShare,
+  faTimes,
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
@@ -13,6 +14,8 @@ import * as PostModelActions from '../../redux/actions/postModel.actions';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { IPost } from '../Models/Post';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reactions-area',
@@ -22,7 +25,8 @@ import { IPost } from '../Models/Post';
 export class ReactionsAreaComponent implements OnInit {
   constructor(
     private http: HttpClient,
-    private store: Store<ApplicationState>
+    private store: Store<ApplicationState>,
+    private toastService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -33,11 +37,14 @@ export class ReactionsAreaComponent implements OnInit {
   }
 
   isPostModelOpen: boolean;
+  isPostShareModelOpen: boolean = false;
+
   openPostModelPost: IPost;
   heartIcon: IconDefinition = faHeart;
   regularHeartIcon: IconDefinition = faRegularHeart;
   commentsIcon: IconDefinition = faComment;
   shareIcon: IconDefinition = faShare;
+  closeIcon: IconDefinition = faTimes;
 
   @Input() reactionsCenter: boolean = false;
 
@@ -47,6 +54,10 @@ export class ReactionsAreaComponent implements OnInit {
   @Input() commentsCount: number;
   @Input() sharesCount: number;
   @Input() postID: number;
+
+  sharePostForm = new FormGroup({
+    sharedContent: new FormControl('Click here to type something!'),
+  });
 
   likePost() {
     this.http
@@ -70,5 +81,42 @@ export class ReactionsAreaComponent implements OnInit {
       });
   }
 
-  sharePost() {}
+  sharePost() {
+    this.isPostShareModelOpen = true;
+  }
+
+  onCloseModel() {
+    this.isPostShareModelOpen = false;
+  }
+
+  onSharePost() {
+    this.http
+      .post(
+        `${environment.backendUrl}/socialmedia/posts/${this.postID}/shares/`,
+        {
+          shared_content: this.sharePostForm.value['sharedContent'],
+        },
+        { observe: 'response' }
+      )
+      .subscribe((response) => {
+        if (response.status == 201) {
+          this.toastService.info(
+            'Post Shared',
+            'You shared this post successfully!',
+            {
+              progressBar: true,
+              positionClass: 'toast-bottom-right',
+              closeButton: true,
+              timeOut: 5000,
+            }
+          );
+
+          this.store.dispatch(
+            PostModelActions.FETCH_POST_MODEL_DETAILS_REQUEST({
+              postid: this.openPostModelPost.id,
+            })
+          );
+        }
+      });
+  }
 }

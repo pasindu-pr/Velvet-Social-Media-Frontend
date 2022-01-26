@@ -17,8 +17,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<ApplicationState>,
-    private http: HttpClient,
-    private toastService: ToastrService
+    private http: HttpClient
   ) {}
 
   locations: LocationState;
@@ -29,13 +28,6 @@ export class AppComponent implements OnInit {
     //   .subscribe((res) => {
     //     console.log(res);
     //   });
-
-    this.toastService.info('Hello world!', 'Toastr fun!', {
-      progressBar: true,
-      positionClass: 'toast-bottom-right',
-      closeButton: true,
-      timeOut: 5000,
-    });
 
     this.store.select('postModelState').subscribe((data) => {
       this.isModelOpen = data.isModelOpen;
