@@ -44,17 +44,31 @@
         </span>
       </div>
       <div class="post-content-typing-area">
-        <textarea name="" id="">What's on your mind...</textarea>
+        <textarea [(ngModel)]="postContent" name="" id=""> </textarea>
       </div>
+
+      <img
+        style="width: 100%; height: 350px; object-fit: cover"
+        alt="uploaded-image"
+        [src]="uploadedImage"
+        *ngIf="uploadedImage"
+      />
 
       <div class="post-content-options-area">
         <p>Add to your post</p>
 
+        <form [formGroup]="imageUploadForm">
+          <input
+            type="file"
+            [formControlName]="'image'"
+            (change)="onUploadImage($event)"
+          />
+        </form>
         <fa-icon [icon]="locationIcon" (click)="onLocationClick()"></fa-icon>
-        <fa-icon [icon]="imagesIcon"></fa-icon>
+        <!-- <fa-icon [icon]="imagesIcon"></fa-icon> -->
       </div>
 
-      <div class="post-submit">
+      <div class="post-submit" (click)="onCreatePost()">
         <button>Post</button>
       </div>
     </div>

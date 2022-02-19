@@ -14,6 +14,9 @@ import { ILocation } from 'src/app/shared/Models/Location';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import * as LocationActions from '../../redux/actions/location.actions';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-post-create',
@@ -28,9 +31,12 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   locationSearchIcon: IconDefinition = faSearchLocation;
   backArrowIcon: IconDefinition = faArrowLeft;
 
-  isModelOpen: boolean = false;
+  isModelOpen: boolean = true;
   isLocationSelectOpen: boolean = false;
+
   selectedLocation: string;
+  uploadedImage: string;
+  postContent: string = "What's on your mind?";
 
   locationSearchForm = new FormGroup({
     locationQuery: new FormControl(),
@@ -38,7 +44,10 @@ export class PostCreateComponent implements OnInit, OnDestroy {
 
   locations: ILocation[] = [];
 
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(
+    private store: Store<ApplicationState>,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.store.select('locationState').subscribe((data) => {
@@ -74,5 +83,45 @@ export class PostCreateComponent implements OnInit, OnDestroy {
 
   onLocationClick() {
     this.isLocationSelectOpen = !this.isLocationSelectOpen;
+  }
+
+  imageUploadForm = new FormGroup({
+    image: new FormControl(),
+  });
+
+  onUploadImage(event: Event | any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+
+      //  upload image to backend
+      let formData: FormData = new FormData();
+      formData.set('photos', file);
+
+      this.http
+        .post<{ image: string }>(
+          `${environment.backendUrl}/socialmedia/image_upload/`,
+          formData
+        )
+        .subscribe((res) => {
+          this.uploadedImage = res.image;
+        });
+    }
+  }
+
+  onCreatePost() {
+    const post = {
+      content: this.postContent,
+      location: this.selectedLocation,
+      image: this.uploadedImage,
+    };
+
+    this.http
+      .post<{ message: string }>(
+        `${environment.backendUrl}/socialmedia/posts/`,
+        post
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }
