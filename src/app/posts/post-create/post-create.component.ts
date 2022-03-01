@@ -14,7 +14,7 @@ import { ILocation } from 'src/app/shared/Models/Location';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import * as LocationActions from '../../redux/actions/location.actions';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import * as PostModelActions from '../../redux/actions/postModel.actions';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
@@ -31,7 +31,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   locationSearchIcon: IconDefinition = faSearchLocation;
   backArrowIcon: IconDefinition = faArrowLeft;
 
-  isModelOpen: boolean = true;
+  isModelOpen: boolean = false;
   isLocationSelectOpen: boolean = false;
 
   selectedLocation: string;
@@ -57,6 +57,12 @@ export class PostCreateComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.store.dispatch(LocationActions.FETCH_LOCATIONS_RESET());
+    this.locations = [];
+    this.locationSearchForm.reset();
+    this.postContent = "What's on your mind?";
+    this.selectedLocation = null as any;
+    this.isLocationSelectOpen = false;
+    this.uploadedImage = null as any;
   }
 
   handleLocationChange(e: Event) {
@@ -116,12 +122,19 @@ export class PostCreateComponent implements OnInit, OnDestroy {
     };
 
     this.http
-      .post<{ message: string }>(
+      .post<{ post: { message: string; postid: number } }>(
         `${environment.backendUrl}/socialmedia/posts/`,
         post
       )
       .subscribe((res) => {
-        console.log(res);
+        this.store.dispatch(
+          PostModelActions.FETCH_POST_MODEL_DETAILS_REQUEST({
+            postid: res.post.postid,
+          })
+        );
+
+        this.isModelOpen = false;
+        this.ngOnDestroy();
       });
   }
 }
