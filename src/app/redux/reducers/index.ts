@@ -1,6 +1,7 @@
 import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import { currentUserReducer, CurrentUserState } from './currentUser.reducers';
+import { friendsReducer, FriendsState } from './friends.reducers';
 import { locationReducer, LocationState } from './locations.reducers';
 import { LoginReducer, LoginState } from './login.reducers';
 import { postModelReducer, PostModelState } from './postModel.reducers';
@@ -17,6 +18,7 @@ export interface ApplicationState {
   timelinePostsState: TimelineState;
   currentUserState: CurrentUserState;
   postModelState: PostModelState;
+  currentUserFriendsState: FriendsState;
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
@@ -26,6 +28,7 @@ export const reducers: ActionReducerMap<ApplicationState> = {
   timelinePostsState: TimelinePostsReducer,
   currentUserState: currentUserReducer,
   postModelState: postModelReducer,
+  currentUserFriendsState: friendsReducer,
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] =

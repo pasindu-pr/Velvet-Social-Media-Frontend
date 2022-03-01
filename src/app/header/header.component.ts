@@ -11,6 +11,7 @@ import {
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '../redux/reducers';
 import * as CurrentUserActions from '../redux/actions/currentUser.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,7 +19,7 @@ import * as CurrentUserActions from '../redux/actions/currentUser.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(private store: Store<ApplicationState>, private router: Router) {}
 
   questionCircleIcon = faQuestionCircle;
   envelopeIcon = faEnvelope;
@@ -30,5 +31,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(CurrentUserActions.FETCH_CURRENT_USER_REQUEST());
+  }
+
+  onFriendsClick() {
+    this.router.navigate(['/myaccount/friends']);
+  }
+
+  onHomeClick() {
+    this.router.navigate(['/']);
   }
 }
