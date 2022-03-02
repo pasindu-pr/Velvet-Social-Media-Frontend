@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from '../redux/reducers';
 import * as CurrentUserActions from '../redux/actions/currentUser.actions';
 import { Router } from '@angular/router';
+import { IUser } from '../shared/Models/user';
 
 @Component({
   selector: 'app-header',
@@ -28,9 +29,13 @@ export class HeaderComponent implements OnInit {
   homeIcon = faHome;
   newsIcon = faNewspaper;
   peopleIcon = faPeopleArrows;
+  currentUser: IUser;
 
   ngOnInit(): void {
     this.store.dispatch(CurrentUserActions.FETCH_CURRENT_USER_REQUEST());
+    this.store.select('currentUserState').subscribe((data) => {
+      this.currentUser = data.user;
+    });
   }
 
   onFriendsClick() {
@@ -39,5 +44,9 @@ export class HeaderComponent implements OnInit {
 
   onHomeClick() {
     this.router.navigate(['/']);
+  }
+
+  onAccountClick() {
+    this.router.navigate(['/myaccount']);
   }
 }
