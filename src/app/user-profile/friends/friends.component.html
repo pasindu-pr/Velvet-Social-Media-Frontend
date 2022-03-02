@@ -1,11 +1,13 @@
 <div class="friends-component-wrapper">
   <h2>Friends of yours</h2>
   <div class="friends">
-    <app-friend></app-friend>
-    <app-friend></app-friend>
-    <app-friend></app-friend>
-    <app-friend></app-friend>
-    <app-friend></app-friend>
-    <app-friend></app-friend>
+    <div *ngFor="let friend of friends">
+      <app-friend
+        [name]="friend.account_id_2.full_name"
+        [profilePic]="friend.account_id_2.profile_picture"
+        [location]="friend.account_id_2.location"
+        [createdAt]="friend.date_confirmed"
+      ></app-friend>
+    </div>
   </div>
 </div>
