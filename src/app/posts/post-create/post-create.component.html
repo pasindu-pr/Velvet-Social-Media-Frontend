@@ -1,6 +1,7 @@
 <div class="post-create-input" (click)="onInputClick()">
   <div class="user">
-    <img src="../../../assets/images/user.jpg" alt="" />
+    <!-- User Icon on the timeline -->
+    <img src="{{ currentUser.profile_picture }}" alt="" />
 
     <div class="whats-up-text">
       <p>Hey, What's on your mind?</p>
@@ -34,9 +35,9 @@
     <hr />
     <div class="post-create-content-area" *ngIf="isLocationSelectOpen == false">
       <div class="user-details-area">
-        <img src="../../../assets/images/user.jpg" alt="" />
+        <img src="{{ currentUser.profile_picture }}" alt="" />
         <span class="post-create-username">
-          John Williamson
+          {{ currentUser.first_name }} {{ currentUser.last_name }}
           <span *ngIf="selectedLocation">
             is at {{ selectedLocation }}
             <fa-icon [icon]="locationIcon"></fa-icon>

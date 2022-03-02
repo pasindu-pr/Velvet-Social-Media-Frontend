@@ -12,6 +12,7 @@ import {
 import { ILocation } from 'src/app/shared/Models/Location';
 
 import { Store } from '@ngrx/store';
+import { IUser } from '../../shared/Models/user';
 import { ApplicationState } from 'src/app/redux/reducers';
 import * as LocationActions from '../../redux/actions/location.actions';
 import * as PostModelActions from '../../redux/actions/postModel.actions';
@@ -37,6 +38,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   selectedLocation: string;
   uploadedImage: string;
   postContent: string = "What's on your mind?";
+  currentUser: IUser;
 
   locationSearchForm = new FormGroup({
     locationQuery: new FormControl(),
@@ -52,6 +54,10 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.store.select('locationState').subscribe((data) => {
       this.locations = data.locationData;
+    });
+
+    this.store.select('currentUserState').subscribe((data) => {
+      this.currentUser = data.user;
     });
   }
 
