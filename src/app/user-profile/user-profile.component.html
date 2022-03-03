@@ -1,5 +1,14 @@
 <div class="user-profile-wrapper">
-  <app-profile-summary></app-profile-summary>
+  <app-profile-summary
+    [name]="getFullName()"
+    [profilePic]="currentUser.profile_picture"
+    [description]="currentUser.description"
+    [website]="currentUser.website"
+    [postCount]="currentUser.posts.length"
+    [friends]="currentUser.friends"
+    [currentUserId]="currentUser.id"
+  >
+  </app-profile-summary>
 
   <div class="photos-area">
     <span><b> Photos </b></span>
