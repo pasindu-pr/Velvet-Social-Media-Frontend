@@ -2,10 +2,17 @@
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
   width: 100%;
   border: 1px solid #202044;
   padding: 10px;
+
+  .profile-pic-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
   .profile-pic {
     width: 80px;
@@ -14,6 +21,17 @@
       width: 100%;
       border-radius: 50%;
     }
+  }
+
+  .unfriend-button {
+    background: transparent;
+    color: white;
+    width: 100px;
+    height: 35px;
+    outline: none;
+    border: 1px solid rgb(109, 109, 109);
+    border-radius: 4px;
+    cursor: pointer;
   }
 
   .friend-details {

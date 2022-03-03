@@ -1,15 +1,23 @@
 <div class="friend-wrapper">
-  <div class="profile-pic">
-    <img src="{{ profilePic }}" alt="" />
+  <div class="profile-pic-details">
+    <div class="profile-pic">
+      <img src="{{ profilePic }}" alt="" />
+    </div>
+
+    <div class="friend-details">
+      <h3>{{ name }}</h3>
+
+      <div class="location-friends">
+        <span> Friend since {{ getFriendFromDate() }} </span>
+        <span> Lives in {{ location }} </span>
+        <!-- <span> 1024 Friends </span> -->
+      </div>
+    </div>
   </div>
 
-  <div class="friend-details">
-    <h3>{{ name }}</h3>
-
-    <div class="location-friends">
-      <span> Friend since {{ getFriendFromDate() }} </span>
-      <span> Lives in {{ location }} </span>
-      <!-- <span> 1024 Friends </span> -->
-    </div>
+  <div>
+    <button class="unfriend-button" (click)="onUnfriendClick()">
+      Unfriend
+    </button>
   </div>
 </div>
