@@ -14,6 +14,6 @@ export interface ICurrentUser extends IUser {
   website: string;
   description: string;
   friends: number;
-  photos: IPhoto;
-  posts: (IPost | IsharedPost)[];
+  photos: IPhoto[];
+  posts: any;
 }

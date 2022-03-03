@@ -15,13 +15,51 @@
   </div>
 
   <div class="photos-wrapper">
-    <app-photo></app-photo>
-    <app-photo></app-photo>
-    <app-photo></app-photo>
-    <app-photo></app-photo>
+    <app-photo
+      *ngFor="let photo of currentUser.photos"
+      [imageLink]="photo.image_link"
+    ></app-photo>
   </div>
 
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+  <div
+    class="timeline-posts"
+    *ngFor="let post of currentUser.posts; index as i"
+  >
+    <div class="original-post" *ngIf="!post.is_shared_post">
+      <app-post
+        [postID]="post.id"
+        [postContent]="post.content"
+        [location]="post.location"
+        [likesCount]="post.likes_count"
+        [commentsCount]="post.comments_count"
+        [sharesCount]="post.shares_count"
+        [username]="post.user.full_name"
+        [userProfilePic]="post.user.profile_picture"
+        [postImage]="post.photos"
+        [createdAt]="post.created_at"
+        [likes]="post.likes"
+      ></app-post>
+    </div>
+
+    <div class="shared-post" *ngIf="post.is_shared_post">
+      <app-post
+        [postID]="post.post.id"
+        [postContent]="post.post.content"
+        [location]="post.post.location"
+        [likesCount]="post.post.likes_count"
+        [commentsCount]="post.post.comments_count"
+        [sharesCount]="post.post.shares_count"
+        [username]="post.post.user.full_name"
+        [userProfilePic]="post.post.user.profile_picture"
+        [postImage]="post.post.photos"
+        [createdAt]="post.post.created_at"
+        [isShared]="post.is_shared_post"
+        [sharedUserUsername]="post.user.full_name"
+        [sharedUserProfilePic]="post.user.profile_picture"
+        [sharedText]="post.shared_content"
+        [sharedTime]="post.created_at"
+        [likes]="post.post.likes"
+      ></app-post>
+    </div>
+  </div>
 </div>
