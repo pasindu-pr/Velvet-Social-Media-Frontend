@@ -1,5 +1,5 @@
 <div class="friends-component-wrapper">
-  <div class="random-users-section">
+  <div *ngIf="friendRequests.length > 0" class="random-users-section">
     <h2>Friends Requests</h2>
     <div class="friends">
       <div *ngFor="let request of friendRequests">
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <hr />
+  <hr *ngIf="friendRequests.length > 0" />
 
   <div class="friends-section">
     <h2>Friends of yours</h2>
