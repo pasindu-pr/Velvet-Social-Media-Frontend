@@ -49,6 +49,7 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FriendsEffects } from './redux/effects/friends.effects';
+import { FriendsRequestsEffects } from './redux/effects/friendRequests.actions';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { FriendsEffects } from './redux/effects/friends.effects';
       CurrentUserEffects,
       PostModelEffects,
       FriendsEffects,
+      FriendsRequestsEffects,
     ]),
     FormsModule,
     NgSelectModule,

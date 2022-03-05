@@ -16,8 +16,22 @@
   </div>
 
   <div>
-    <button class="unfriend-button" (click)="onUnfriendClick()">
+    <button
+      *ngIf="type === 'friend'"
+      class="unfriend-button"
+      (click)="onUnfriendClick()"
+    >
       Unfriend
     </button>
+
+    <div *ngIf="type === 'request'" class="confirm-request-section">
+      <button class="unfriend-button" (click)="onUnfriendClick()">
+        Confirm
+      </button>
+
+      <button class="unfriend-button delete-button" (click)="onUnfriendClick()">
+        Delete
+      </button>
+    </div>
   </div>
 </div>

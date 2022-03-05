@@ -27,6 +27,7 @@ export class FriendComponent implements OnInit {
   @Input() location: string;
   @Input() createdAt: string;
   @Input() id: number;
+  @Input() type: string;
 
   getFriendFromDate() {
     dayjs.extend(relativeTime);

@@ -1,14 +1,35 @@
 <div class="friends-component-wrapper">
-  <h2>Friends of yours</h2>
-  <div class="friends">
-    <div *ngFor="let friend of friends">
-      <app-friend
-        [name]="friend.account_id_2.full_name"
-        [profilePic]="friend.account_id_2.profile_picture"
-        [location]="friend.account_id_2.location"
-        [createdAt]="friend.date_confirmed"
-        [id]="friend.id"
-      ></app-friend>
+  <div class="random-users-section">
+    <h2>Friends Requests</h2>
+    <div class="friends">
+      <div *ngFor="let request of friendRequests">
+        <app-friend
+          [name]="request.from_account.full_name"
+          [profilePic]="request.from_account.profile_picture"
+          [location]="request.from_account.location"
+          [createdAt]="request.request_date"
+          [id]="request.id"
+          [type]="'request'"
+        ></app-friend>
+      </div>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="friends-section">
+    <h2>Friends of yours</h2>
+    <div class="friends">
+      <div *ngFor="let friend of friends">
+        <app-friend
+          [name]="friend.account_id_2.full_name"
+          [profilePic]="friend.account_id_2.profile_picture"
+          [location]="friend.account_id_2.location"
+          [createdAt]="friend.date_confirmed"
+          [id]="friend.id"
+          [type]="'friend'"
+        ></app-friend>
+      </div>
     </div>
   </div>
 </div>
