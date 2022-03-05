@@ -8,7 +8,12 @@
       <h3>{{ name }}</h3>
 
       <div class="location-friends">
-        <span> Friend since {{ getFriendFromDate() }} </span>
+        <span *ngIf="type === 'friend'">
+          Friend since {{ getFriendFromDate() }}
+        </span>
+        <span *ngIf="type === 'request'"
+          >Requested {{ getFriendFromDate() }}</span
+        >
         <span> Lives in {{ location }} </span>
         <!-- <span> 1024 Friends </span> -->
       </div>
@@ -25,11 +30,14 @@
     </button>
 
     <div *ngIf="type === 'request'" class="confirm-request-section">
-      <button class="unfriend-button" (click)="onUnfriendClick()">
+      <button class="unfriend-button" (click)="onRequestConfirmClick()">
         Confirm
       </button>
 
-      <button class="unfriend-button delete-button" (click)="onUnfriendClick()">
+      <button
+        class="unfriend-button delete-button"
+        (click)="onRequestDeleteClick()"
+      >
         Delete
       </button>
     </div>

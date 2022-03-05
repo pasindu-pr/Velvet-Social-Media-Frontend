@@ -3,16 +3,16 @@ import { Ifriend } from 'src/app/shared/Models/Friend';
 import { IfriendRequest } from 'src/app/shared/Models/IFriendRequest';
 
 export const FETCH_USERS_FRIENDS_REQUESTS_REQUEST = createAction(
-  "[Friends] Fetch current user's Friends"
+  "[Friends] Fetch current user's friends requests"
 );
 
 export const FETCH_USERS_FRIENDS_REQUESTS_SUCCESS = createAction(
-  "[Friends] Fetch current user's friends success",
+  "[Friends] Fetch current user's friends requests success",
   props<{ requests: IfriendRequest[] }>()
 );
 
 export const FETCH_USERS_FRIENDS_REQUESTS_ERROR = createAction(
-  "[Friends] Fetch current user's friends error",
+  "[Friends] Fetch current user's friends requests error",
   props<{ error: string }>()
 );
 
