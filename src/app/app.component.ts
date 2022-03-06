@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from './redux/reducers';
 import { LocationState } from './redux/reducers/locations.reducers';
 import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',

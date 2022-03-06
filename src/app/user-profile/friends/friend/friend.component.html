@@ -29,17 +29,27 @@
       Unfriend
     </button>
 
-    <div *ngIf="type === 'request'" class="confirm-request-section">
-      <button class="unfriend-button" (click)="onRequestConfirmClick()">
-        Confirm
+    <div>
+      <button
+        *ngIf="type === 'person'"
+        class="unfriend-button"
+        (click)="onAddFriendClick()"
+      >
+        Add Friend
       </button>
 
-      <button
-        class="unfriend-button delete-button"
-        (click)="onRequestDeleteClick()"
-      >
-        Delete
-      </button>
+      <div *ngIf="type === 'request'" class="confirm-request-section">
+        <button class="unfriend-button" (click)="onRequestConfirmClick()">
+          Confirm
+        </button>
+
+        <button
+          class="unfriend-button delete-button"
+          (click)="onRequestDeleteClick()"
+        >
+          Delete
+        </button>
+      </div>
     </div>
   </div>
 </div>

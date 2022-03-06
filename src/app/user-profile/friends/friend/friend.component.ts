@@ -8,6 +8,7 @@ import { ApplicationState } from 'src/app/redux/reducers';
 import { environment } from 'src/environments/environment';
 import * as FriendsActions from '../../../redux/actions/friends.action';
 import * as FriendsRequestsActions from '../../../redux/actions/friendRequests.actions';
+import * as PeopleActions from '../../../redux/actions/poeple.actions';
 
 @Component({
   selector: 'app-friend',
@@ -56,6 +57,35 @@ export class FriendComponent implements OnInit {
           this.store.dispatch(
             FriendsRequestsActions.FETCH_USERS_FRIENDS_REQUESTS_REQUEST()
           );
+        }
+      });
+  }
+
+  onAddFriendClick() {
+    this.http
+      .post(
+        `${environment.backendUrl}/socialmedia/friends-requests/`,
+        {
+          to_account: this.id,
+        },
+        {
+          observe: 'response',
+        }
+      )
+      .subscribe((data) => {
+        if (data.status === 201) {
+          this.toastService.info(
+            'Friend Request',
+            `You sent ${this.name} a friend request!`,
+            {
+              progressBar: true,
+              positionClass: 'toast-bottom-right',
+              closeButton: true,
+              timeOut: 5000,
+            }
+          );
+
+          this.store.dispatch(PeopleActions.FETCH_PEOPLE_REQUEST());
         }
       });
   }

@@ -8,6 +8,7 @@ import {
 import { friendsReducer, FriendsState } from './friends.reducers';
 import { locationReducer, LocationState } from './locations.reducers';
 import { LoginReducer, LoginState } from './login.reducers';
+import { peopleReducer, PeopleState } from './poeple.reducers';
 import { postModelReducer, PostModelState } from './postModel.reducers';
 import {
   UserRegisterInitialState,
@@ -24,6 +25,7 @@ export interface ApplicationState {
   postModelState: PostModelState;
   currentUserFriendsState: FriendsState;
   friendsRequestsState: FriendsRequestsState;
+  peopleState: PeopleState;
 }
 
 export const reducers: ActionReducerMap<ApplicationState> = {
@@ -35,6 +37,7 @@ export const reducers: ActionReducerMap<ApplicationState> = {
   postModelState: postModelReducer,
   currentUserFriendsState: friendsReducer,
   friendsRequestsState: FriendsRequestsReducer,
+  peopleState: peopleReducer,
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] =

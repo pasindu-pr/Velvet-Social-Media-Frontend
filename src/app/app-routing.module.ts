@@ -4,6 +4,7 @@ import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
 import { NewsDescriptionComponent } from './news/news-description/news-description.component';
 import { NewsComponent } from './news/news.component';
+import { PeopleComponent } from './people/people.component';
 import { PostsComponent } from './posts/posts.component';
 import { FriendsComponent } from './user-profile/friends/friends.component';
 import { PhotosComponent } from './user-profile/photos/photos.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'myaccount', component: UserProfileComponent },
   { path: 'myaccount/photos', component: PhotosComponent },
   { path: 'myaccount/friends', component: FriendsComponent },
+  { path: 'myaccount/people', component: PeopleComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
 ];

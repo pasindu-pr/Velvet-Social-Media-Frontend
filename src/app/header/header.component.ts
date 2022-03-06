@@ -7,6 +7,7 @@ import {
   faHome,
   faNewspaper,
   faPeopleArrows,
+  faUserFriends,
 } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '../redux/reducers';
@@ -30,6 +31,7 @@ export class HeaderComponent implements OnInit {
   newsIcon = faNewspaper;
   peopleIcon = faPeopleArrows;
   currentUser: IUser;
+  friendsIcon = faUserFriends;
 
   ngOnInit(): void {
     this.store.dispatch(CurrentUserActions.FETCH_CURRENT_USER_REQUEST());
@@ -48,5 +50,9 @@ export class HeaderComponent implements OnInit {
 
   onAccountClick() {
     this.router.navigate(['/myaccount']);
+  }
+
+  onPeopleClick() {
+    this.router.navigate(['/myaccount/people']);
   }
 }

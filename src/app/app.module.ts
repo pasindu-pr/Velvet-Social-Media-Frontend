@@ -50,6 +50,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FriendsEffects } from './redux/effects/friends.effects';
 import { FriendsRequestsEffects } from './redux/effects/friendRequests.actions';
+import { PeopleComponent } from './people/people.component';
+import { PeopleEffects } from './redux/effects/people.effects';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,7 @@ import { FriendsRequestsEffects } from './redux/effects/friendRequests.actions';
     RegisterComponent,
     NotificationComponent,
     AppLoadingComponent,
+    PeopleComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +97,7 @@ import { FriendsRequestsEffects } from './redux/effects/friendRequests.actions';
       PostModelEffects,
       FriendsEffects,
       FriendsRequestsEffects,
+      PeopleEffects,
     ]),
     FormsModule,
     NgSelectModule,

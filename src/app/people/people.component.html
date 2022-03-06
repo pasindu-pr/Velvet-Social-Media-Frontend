@@ -1,0 +1,17 @@
+<div class="friends-component-wrapper">
+  <div class="people-area">
+    <h2>People you may know</h2>
+
+    <div class="friends">
+      <div *ngFor="let person of people">
+        <app-friend
+          [name]="person.full_name"
+          [profilePic]="person.profile_picture"
+          [location]="person.location"
+          [id]="person.id"
+          [type]="'person'"
+        ></app-friend>
+      </div>
+    </div>
+  </div>
+</div>
