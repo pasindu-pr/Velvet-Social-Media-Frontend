@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Component, Input, OnInit } from '@angular/core';
 import { ICurrentUser } from '../shared/Models/user';
 
 @Component({
@@ -11,17 +10,9 @@ import { ICurrentUser } from '../shared/Models/user';
 export class UserProfileComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
-  currentUser: ICurrentUser;
+  @Input() currentUser: ICurrentUser;
 
-  ngOnInit(): void {
-    this.http
-      .get<ICurrentUser>(
-        `${environment.backendUrl}/socialmedia/current-profile/`
-      )
-      .subscribe((data) => {
-        this.currentUser = data;
-      });
-  }
+  ngOnInit(): void {}
 
   getFullName() {
     return `${this.currentUser.first_name} ${this.currentUser.last_name}`;

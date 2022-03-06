@@ -10,6 +10,7 @@
           [createdAt]="request.request_date"
           [id]="request.id"
           [type]="'request'"
+          [userid]="request.from_account.id"
         ></app-friend>
       </div>
     </div>
@@ -22,6 +23,7 @@
     <div class="friends">
       <div *ngFor="let friend of friends">
         <app-friend
+          [userid]="friend.account_id_2.id"
           [name]="friend.account_id_2.full_name"
           [profilePic]="friend.account_id_2.profile_picture"
           [location]="friend.account_id_2.location"

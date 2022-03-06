@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import * as FriendsActions from '../../../redux/actions/friends.action';
 import * as FriendsRequestsActions from '../../../redux/actions/friendRequests.actions';
 import * as PeopleActions from '../../../redux/actions/poeple.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-friend',
@@ -19,7 +20,8 @@ export class FriendComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private store: Store<ApplicationState>,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -30,10 +32,15 @@ export class FriendComponent implements OnInit {
   @Input() createdAt: string;
   @Input() id: number;
   @Input() type: string;
+  @Input() userid: number;
 
   getFriendFromDate() {
     dayjs.extend(relativeTime);
     return dayjs(this.createdAt).fromNow();
+  }
+
+  onNameClick() {
+    this.router.navigate([`/users/${this.userid}`]);
   }
 
   onUnfriendClick() {

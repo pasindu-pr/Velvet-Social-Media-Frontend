@@ -52,6 +52,8 @@ import { FriendsEffects } from './redux/effects/friends.effects';
 import { FriendsRequestsEffects } from './redux/effects/friendRequests.actions';
 import { PeopleComponent } from './people/people.component';
 import { PeopleEffects } from './redux/effects/people.effects';
+import { CurrentUserPageComponent } from './shared/user-profile-pages/current-user-page/current-user-page.component';
+import { UserPageComponent } from './shared/user-profile-pages/user-page/user-page.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +80,8 @@ import { PeopleEffects } from './redux/effects/people.effects';
     NotificationComponent,
     AppLoadingComponent,
     PeopleComponent,
+    CurrentUserPageComponent,
+    UserPageComponent,
   ],
   imports: [
     BrowserModule,

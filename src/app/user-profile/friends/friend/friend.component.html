@@ -5,7 +5,7 @@
     </div>
 
     <div class="friend-details">
-      <h3>{{ name }}</h3>
+      <h3 style="cursor: pointer" (click)="onNameClick()">{{ name }}</h3>
 
       <div class="location-friends">
         <span *ngIf="type === 'friend'">
