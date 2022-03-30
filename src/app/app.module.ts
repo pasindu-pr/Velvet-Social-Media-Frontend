@@ -54,6 +54,7 @@ import { PeopleComponent } from './people/people.component';
 import { PeopleEffects } from './redux/effects/people.effects';
 import { CurrentUserPageComponent } from './shared/user-profile-pages/current-user-page/current-user-page.component';
 import { UserPageComponent } from './shared/user-profile-pages/user-page/user-page.component';
+import { ProfileEditComponent } from './user-profile/profile-edit/profile-edit.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { UserPageComponent } from './shared/user-profile-pages/user-page/user-pa
     PeopleComponent,
     CurrentUserPageComponent,
     UserPageComponent,
+    ProfileEditComponent,
   ],
   imports: [
     BrowserModule,

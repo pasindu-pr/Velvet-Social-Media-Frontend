@@ -1,8 +1,15 @@
 <app-loading *ngIf="isFormLoading"></app-loading>
 <div class="login-page-wrapper">
   <div class="site-description">
-    <h2>Welcome to VELVET</h2>
-    <p>Enter your details to create your account</p>
+    <div *ngIf="!isEditing">
+      <h2>Welcome to VELVET</h2>
+      <p>Enter your details to create your account</p>
+    </div>
+
+    <div *ngIf="isEditing">
+      <h2>VELVET</h2>
+      <p>Edit your profile</p>
+    </div>
     <p class="login-text error-text" *ngIf="!isFormValid">{{ formError }}</p>
   </div>
 
@@ -39,6 +46,7 @@
       <app-input
         formControlName="password"
         required
+        [inputType]="'password'"
         [icon]="passwordIcon"
       ></app-input>
     </div>
@@ -67,6 +75,6 @@
       </ng-select>
     </div>
 
-    <button>Create an account</button>
+    <button>{{ isEditing ? "Edit Profile" : "Create an account" }}</button>
   </form>
 </div>

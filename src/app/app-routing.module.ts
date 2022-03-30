@@ -10,6 +10,7 @@ import { CurrentUserPageComponent } from './shared/user-profile-pages/current-us
 import { UserPageComponent } from './shared/user-profile-pages/user-page/user-page.component';
 import { FriendsComponent } from './user-profile/friends/friends.component';
 import { PhotosComponent } from './user-profile/photos/photos.component';
+import { ProfileEditComponent } from './user-profile/profile-edit/profile-edit.component';
 
 const routes: Routes = [
   { path: '', component: PostsComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'myaccount/photos', component: PhotosComponent },
   { path: 'myaccount/friends', component: FriendsComponent },
   { path: 'myaccount/people', component: PeopleComponent },
+  { path: 'myaccount/edit', component: ProfileEditComponent },
   { path: 'users/:id', component: UserPageComponent },
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },

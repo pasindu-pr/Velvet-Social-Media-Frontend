@@ -7,7 +7,11 @@
     <div class="name">
       <h3>{{ name }}</h3>
       <!-- <button class="follow-button">Add Friend</button> -->
-      <button class="follow-button" *ngIf="userType() == CURRENT_USER">
+      <button
+        (click)="onEditProfileClick()"
+        class="follow-button"
+        *ngIf="userType() == CURRENT_USER"
+      >
         Edit Profile
       </button>
     </div>

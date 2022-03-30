@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faLink, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
@@ -10,7 +11,7 @@ import { IUser } from 'src/app/shared/Models/user';
   styleUrls: ['./profile-summary.component.scss'],
 })
 export class ProfileSummaryComponent implements OnInit {
-  constructor(private store: Store<ApplicationState>) {}
+  constructor(private store: Store<ApplicationState>, private router: Router) {}
 
   currentUser: IUser;
 
@@ -27,6 +28,10 @@ export class ProfileSummaryComponent implements OnInit {
       return this.CURRENT_USER;
     }
     return;
+  }
+
+  onEditProfileClick() {
+    this.router.navigate(['/myaccount/edit']);
   }
 
   @Input() name: string;

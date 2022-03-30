@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
   IconDefinition,
@@ -9,6 +9,7 @@ import {
 import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { ILocation } from 'src/app/shared/Models/Location';
+import { IUser } from 'src/app/shared/Models/user';
 import * as LocationActios from '../../redux/actions/location.actions';
 import * as SignUpActions from '../../redux/actions/signup.actions';
 
@@ -28,6 +29,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private datePipe: DatePipe
   ) {}
 
+  currentUser: IUser;
+
+  @Input() isEditing: boolean = false;
+
   ngOnInit(): void {
     this.store.select('locationState').subscribe((data) => {
       this.locations = data.locationData;
@@ -38,6 +43,25 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.isFormLoading = data.loading;
       this.isFormValid = data.success;
     });
+
+    if (this.isEditing) {
+      this.store.select('currentUserState').subscribe((data) => {
+        this.currentUser = data.user;
+
+        if (this.isEditing) {
+          this.registerForm.patchValue({
+            first_name: data.user.first_name,
+            last_name: data.user.last_name,
+            email: data.user.email,
+            birthdate: data.user.birthdate,
+            location: data.user.location,
+            password: 'default',
+          });
+        }
+      });
+    }
+
+    console.log(this.currentUser.first_name);
   }
 
   ngOnDestroy(): void {
@@ -84,12 +108,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
     let location = this.registerForm.value['location'];
     location = `${location.city}, ${location.region}, ${location.country}`;
-
-    console.log({
-      ...this.registerForm.value,
-      location,
-      birthdate: birthdate,
-    });
 
     this.store.dispatch(
       SignUpActions.USER_REGISTER_REQUEST({
