@@ -13,6 +13,14 @@ export class AppInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     console.log(req.url);
+
+    if (
+      req.url.startsWith(`${environment.backendUrl}/auth/users/`) ||
+      req.url.startsWith(`${environment.backendUrl}/socialmedia/image_upload/`)
+    ) {
+      return next.handle(req);
+    }
+
     if (req.url.startsWith(environment.backendUrl)) {
       const reqWithHeaders = req.clone({
         setHeaders: {

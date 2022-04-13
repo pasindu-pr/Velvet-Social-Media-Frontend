@@ -15,6 +15,7 @@ export const initialState: UserRegisterInitialState = {
     email: '',
     birthdate: '',
     location: '',
+    profile_picture: '',
   },
 
   loading: undefined as any,
@@ -32,9 +33,26 @@ export const UserRegisterReducer = createReducer(
 
   on(
     UserRegisterActions.USER_REGISTER_SUCCESS,
-    (state, { first_name, last_name, email, birthdate, location }) => ({
+    (
+      state,
+      {
+        first_name,
+        last_name,
+        email,
+        birthdate,
+        location,
+        profile_picture: profile_pic,
+      }
+    ) => ({
       ...state,
-      user: { first_name, last_name, email, birthdate, location },
+      user: {
+        first_name,
+        last_name,
+        email,
+        birthdate,
+        location,
+        profile_picture: profile_pic,
+      },
       loading: false,
       success: true,
     })

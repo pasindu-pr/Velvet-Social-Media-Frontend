@@ -61,6 +61,17 @@
       ></app-input>
     </div>
 
+    <div class="profile-picture">
+      <label for=""> Profile Picture: </label>
+      <app-input
+        formControlName="profile_picture"
+        [icon]="passwordIcon"
+        [inputType]="'file'"
+        required
+        (change)="onUploadImage($event)"
+      ></app-input>
+    </div>
+
     <div class="location">
       <label for=""> Location: </label>
       <ng-select

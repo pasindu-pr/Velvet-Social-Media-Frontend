@@ -29,6 +29,7 @@ export class UserSignupEffects {
               password: action.password,
               birthdate: action.birthdate,
               location: action.location,
+              profile_picture: action.profile_picture,
             }
           )
           .pipe(
@@ -40,6 +41,7 @@ export class UserSignupEffects {
                 email: res.email,
                 birthdate: res.birthdate,
                 location: res.location,
+                profile_picture: res.profile_picture,
               });
             }),
 

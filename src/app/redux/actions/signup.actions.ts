@@ -7,6 +7,7 @@ export interface IUserRegister {
   password: string;
   birthdate: string;
   location: string;
+  profile_picture: string;
 }
 
 export interface IUserRegisterResponse {
@@ -15,6 +16,7 @@ export interface IUserRegisterResponse {
   email: string;
   birthdate: string;
   location: string;
+  profile_picture: string;
 }
 
 export const USER_REGISTER_REQUEST = createAction(

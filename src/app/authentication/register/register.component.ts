@@ -1,4 +1,5 @@
 import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {
@@ -10,6 +11,7 @@ import { Store } from '@ngrx/store';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { ILocation } from 'src/app/shared/Models/Location';
 import { IUser } from 'src/app/shared/Models/user';
+import { environment } from 'src/environments/environment';
 import * as LocationActios from '../../redux/actions/location.actions';
 import * as SignUpActions from '../../redux/actions/signup.actions';
 
@@ -26,7 +28,8 @@ interface Event {
 export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<ApplicationState>,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private http: HttpClient
   ) {}
 
   currentUser: IUser;
@@ -56,12 +59,11 @@ export class RegisterComponent implements OnInit, OnDestroy {
             birthdate: data.user.birthdate,
             location: data.user.location,
             password: 'default',
+            profile_pic: data.user.profile_picture,
           });
         }
       });
     }
-
-    console.log(this.currentUser.first_name);
   }
 
   ngOnDestroy(): void {
@@ -76,6 +78,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   isFormLoading: boolean;
   formError: string;
   isFormValid: boolean = true;
+  uploadedImage: string;
 
   locations: ILocation[] = [];
 
@@ -86,12 +89,34 @@ export class RegisterComponent implements OnInit, OnDestroy {
     birthdate: new FormControl(),
     password: new FormControl(),
     location: new FormControl(),
+    profile_picture: new FormControl(),
   });
 
   onSearch(e: Event) {
     this.store.dispatch(
       LocationActios.FETCH_LOCATIONS_REQUEST({ query: e.term })
     );
+  }
+
+  onUploadImage(event: Event | any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+
+      console.log(file);
+
+      //  upload image to backend
+      let formData: FormData = new FormData();
+      formData.set('photos', file);
+
+      this.http
+        .post<{ image: string }>(
+          `${environment.backendUrl}/socialmedia/image_upload/`,
+          formData
+        )
+        .subscribe((res) => {
+          this.uploadedImage = res.image;
+        });
+    }
   }
 
   onSubmit(e: Event) {
@@ -114,6 +139,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         ...this.registerForm.value,
         location,
         birthdate: birthdate,
+        profile_picture: this.uploadedImage,
       })
     );
   }
