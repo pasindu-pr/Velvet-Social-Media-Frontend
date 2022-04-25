@@ -3,7 +3,6 @@ import { Store } from '@ngrx/store';
 import * as TimelineActions from '../redux/actions/timeline.actions';
 import * as CurrentUserActions from '../redux/actions/currentUser.actions';
 import { ApplicationState } from '../redux/reducers';
-import { IPost, IsharedPost } from '../shared/Models/Post';
 
 @Component({
   selector: 'app-posts',

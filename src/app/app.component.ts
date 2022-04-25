@@ -22,14 +22,14 @@ export class AppComponent implements OnInit {
   locations: LocationState;
 
   ngOnInit() {
-    // this.http
-    //   .get(`${environment.backendUrl}/auth/users/me/`)
-    //   .subscribe((res) => {
-    //     console.log(res);
-    //   });
-
     this.store.select('postModelState').subscribe((data) => {
       this.isModelOpen = data.isModelOpen;
+    });
+
+    this.store.select('currentUserState').subscribe((data) => {
+      if (data.user === undefined) {
+        this.router.navigate(['/auth/login']);
+      }
     });
   }
 
