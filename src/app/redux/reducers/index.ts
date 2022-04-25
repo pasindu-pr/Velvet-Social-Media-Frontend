@@ -8,6 +8,7 @@ import {
 import { friendsReducer, FriendsState } from './friends.reducers';
 import { locationReducer, LocationState } from './locations.reducers';
 import { LoginReducer, LoginState } from './login.reducers';
+import { clearState } from './logoutMetaReducer.reducers';
 import { peopleReducer, PeopleState } from './poeple.reducers';
 import { postModelReducer, PostModelState } from './postModel.reducers';
 import {
@@ -41,4 +42,4 @@ export const reducers: ActionReducerMap<ApplicationState> = {
 };
 
 export const metaReducers: MetaReducer<ApplicationState>[] =
-  !environment.production ? [] : [];
+  !environment.production ? [clearState] : [clearState];
