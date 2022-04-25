@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faLink, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
+import { logoutAction } from 'src/app/redux/actions/logout.actions';
 import { ApplicationState } from 'src/app/redux/reducers';
 import { IUser } from 'src/app/shared/Models/user';
 
@@ -37,6 +38,7 @@ export class ProfileSummaryComponent implements OnInit {
   onLogoutClick() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+    this.store.dispatch(logoutAction());
     this.router.navigate(['/auth/login']);
   }
 

@@ -18,7 +18,11 @@
       <div class="icon">
         <fa-icon [icon]="bellIcon"> </fa-icon>
       </div>
-      <div class="user-icon" (click)="onAccountClick()">
+      <div
+        *ngIf="currentUser.profile_picture"
+        class="user-icon"
+        (click)="onAccountClick()"
+      >
         <img
           src="{{ currentUser.profile_picture && currentUser.profile_picture }}"
           alt="user on Velvet"
