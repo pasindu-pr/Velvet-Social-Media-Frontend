@@ -13,10 +13,12 @@
 
   .profile-photo {
     width: 150px;
+    height: 150px;
     img {
       width: 100%;
       border-radius: 50%;
       object-fit: cover;
+      height: 100%;
     }
   }
 
