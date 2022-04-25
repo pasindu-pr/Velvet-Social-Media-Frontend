@@ -25,12 +25,6 @@ export class AppComponent implements OnInit {
     this.store.select('postModelState').subscribe((data) => {
       this.isModelOpen = data.isModelOpen;
     });
-
-    this.store.select('currentUserState').subscribe((data) => {
-      if (data.user === undefined) {
-        this.router.navigate(['/auth/login']);
-      }
-    });
   }
 
   isModelOpen: boolean;
