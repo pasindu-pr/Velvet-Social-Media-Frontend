@@ -34,6 +34,12 @@ export class ProfileSummaryComponent implements OnInit {
     this.router.navigate(['/myaccount/edit']);
   }
 
+  onLogoutClick() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    this.router.navigate(['/auth/login']);
+  }
+
   @Input() name: string;
   @Input() profilePic: string;
   @Input() description: string;

@@ -14,6 +14,14 @@
       >
         Edit Profile
       </button>
+
+      <button
+        (click)="onLogoutClick()"
+        class="follow-button"
+        *ngIf="userType() == CURRENT_USER"
+      >
+        Logout
+      </button>
     </div>
 
     <div class="profile-description" *ngIf="description">
