@@ -6,6 +6,7 @@ import { LocationResponse } from 'src/app/shared/Models/LocationApiResponse';
 import * as LocationActions from '../actions/location.actions';
 import { CityLocation, ILocation } from '../../shared/Models/Location';
 import { Action } from '@ngrx/store';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class LocationEffects {
@@ -24,7 +25,7 @@ export class LocationEffects {
       switchMap((action) => {
         return this.http
           .get<LocationResponse>(
-            `http://api.geonames.org/searchJSON?q=${action.query}&maxRows=10&username=${this.API_USERNAME}`
+            `${environment.backendUrl}/socialmedia/locations/${action.query}`
           )
           .pipe(
             map((res) => {

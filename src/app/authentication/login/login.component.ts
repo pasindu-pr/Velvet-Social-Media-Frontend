@@ -18,6 +18,7 @@ import * as LoginActions from '../../redux/actions/login.actions';
 export class LoginComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private store: Store<ApplicationState>
   ) {}
 
@@ -37,6 +38,12 @@ export class LoginComponent implements OnInit {
       }
 
       this.isLoading = data.loading;
+    });
+
+    this.store.select('currentUserState').subscribe((data) => {
+      if (data.user != undefined) {
+        this.router.navigate(['/']);
+      }
     });
   }
 
