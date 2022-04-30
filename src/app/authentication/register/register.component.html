@@ -87,5 +87,9 @@
     </div>
 
     <button>{{ isEditing ? "Edit Profile" : "Create an account" }}</button>
+
+    <p (click)="onLoginClick()" class="not-have-account-text">
+      Not have an account? Click here to register!
+    </p>
   </form>
 </div>

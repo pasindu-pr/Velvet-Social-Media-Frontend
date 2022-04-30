@@ -16,7 +16,8 @@ export class AppInterceptor implements HttpInterceptor {
 
     if (
       req.url == `${environment.backendUrl}/auth/users/` ||
-      req.url == `${environment.backendUrl}/socialmedia/image_upload/`
+      req.url == `${environment.backendUrl}/socialmedia/image_upload/` ||
+      req.url.startsWith(`${environment.backendUrl}/socialmedia/locations/`)
     ) {
       return next.handle(req);
     }

@@ -75,4 +75,9 @@ export class LoginComponent implements OnInit {
 
     this.store.dispatch(LoginActions.USER_LOGIN_REQUEST(this.loginForm.value));
   }
+
+  onRegisterClick() {
+    console.log('Clicked');
+    this.router.navigate(['/auth/register']);
+  }
 }

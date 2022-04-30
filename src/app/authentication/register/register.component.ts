@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   IconDefinition,
   faEnvelope,
@@ -29,7 +30,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private store: Store<ApplicationState>,
     private datePipe: DatePipe,
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) {}
 
   currentUser: IUser;
@@ -142,5 +144,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
         profile_picture: this.uploadedImage,
       })
     );
+  }
+
+  onLoginClick() {
+    this.router.navigate(['/auth/login']);
   }
 }
