@@ -50,6 +50,7 @@ export class ProfileSummaryComponent implements OnInit {
   @Input() friends: number;
   @Input() postCount: number;
   @Input() currentUserId: number;
+  @Input() location: string;
 
   linkIcon: IconDefinition = faLink;
 }

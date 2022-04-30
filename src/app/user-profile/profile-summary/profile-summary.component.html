@@ -5,7 +5,11 @@
 
   <div class="profile-info-area">
     <div class="name">
-      <h3>{{ name }}</h3>
+      <div>
+        <h3>{{ name }}</h3>
+        <small>Lives in {{ location }}</small>
+      </div>
+
       <!-- <button class="follow-button">Add Friend</button> -->
       <button
         (click)="onEditProfileClick()"
